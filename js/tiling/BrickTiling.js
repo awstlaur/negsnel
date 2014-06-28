@@ -7,5 +7,5 @@ BrickTiling.prototype.getBrick = function(a,b){
 }
 
 BrickTiling.prototype.toString = function(){
- return "BrickTiling" + this.t.toString(); 
+ return "BrickTiling " + this.t.toString(); 
 }

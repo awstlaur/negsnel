@@ -23,8 +23,8 @@ function NegSnell(){
 }, false);
    
    
-  var t = new HexagonTriangleTiling();
-  var frame = new NegSnellFrame(t.getHexagon(0,0), c);
+  var t = new ParallelogramTiling(0.5,0.5);
+  var frame = new NegSnellFrame(t.getParallelogram(0,0), c);
   
   //document.onkeypress = keypressHandler(event);
   
