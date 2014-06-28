@@ -1,7 +1,7 @@
 //"abstract class"
 
 function TilingPolygon(){
-  
+  this.tiling = null;
 }
 
   
@@ -50,6 +50,10 @@ TilingPolygon.prototype.getCenterOfMass = function(){
    cy+=v.getY();
   }
   return new Point(cx/n, cy/n);
+}
+
+TilingPolygon.prototype.tilingToString = function(){
+  return this.tiling.toString();
 }
 
 /* 

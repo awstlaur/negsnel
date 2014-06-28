@@ -35,11 +35,7 @@ Brick.prototype.getOpposite = function(i){
             default: 
                 throw new Error("Called getOpposite() with invalid i.");
         }
-}
-  
-Brick.prototype.tilingToString = function(){
-  return this.tiling.toString();
-}
+}  
   
 Brick.prototype.compareTo = function(p){
   if (this.a > p.a){

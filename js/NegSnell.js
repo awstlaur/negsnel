@@ -23,8 +23,8 @@ function NegSnell(){
 }, false);
    
    
-  var t = new BrickTiling(0.5);
-  var frame = new NegSnellFrame(t.getBrick(0,0), c);
+  var t = new HexagonTriangleTiling();
+  var frame = new NegSnellFrame(t.getHexagon(0,0), c);
   
   //document.onkeypress = keypressHandler(event);
   

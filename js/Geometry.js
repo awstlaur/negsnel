@@ -6,7 +6,7 @@ var Geometry = {
    var c = z.getX() - x.getX();
    var d = z.getY() - x.getY();
    var out = (a*d - b*c); 
-   return (out === 0) ? 0 : (out > 0) ? 1 : -1;
+   return Geometry.signum(out);
   },
   
   /**
@@ -30,6 +30,10 @@ var Geometry = {
   reflectDir: function(s,dir){
     var diff=s.end().subtract(s.start());
     return dir.cxMult(diff.cxConj()).cxConj().cxMult(diff).scale(1/diff.normSquared());
+  },
+  
+  signum: function(i){
+     return (i === 0) ? 0 : (i > 0) ? 1 : -1; 
   }
     
 }
