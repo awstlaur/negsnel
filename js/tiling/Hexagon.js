@@ -29,17 +29,17 @@ Hexagon.prototype.numSides = function(){
 Hexagon.prototype.getOpposite = function(i){
   switch (i) {
                 case 0:
-                    return new TilingEdge(new DownTriangle(this.tiling, this.a, this.b), 2); break;
+                    return new TilingEdge(new HexDownTriangle(this.tiling, this.a, this.b), 2); break;
                 case 1:
-                    return new TilingEdge(new UpTriangle(this.tiling, this.a, this.b + 1), 1); break;
+                    return new TilingEdge(new HexUpTriangle(this.tiling, this.a, this.b + 1), 1); break;
                 case 2:
-                    return new TilingEdge(new DownTriangle(this.tiling, this.a - 1, this.b), 0); break;
+                    return new TilingEdge(new HexDownTriangle(this.tiling, this.a - 1, this.b), 0); break;
                 case 3:
-                    return new TilingEdge(new UpTriangle(this.tiling, this.a - 1, this.b), 2); break;
+                    return new TilingEdge(new HexUpTriangle(this.tiling, this.a - 1, this.b), 2); break;
                 case 4:
-                    return new TilingEdge(new DownTriangle(this.tiling, this.a - 1, this.b - 1), 1); break;
+                    return new TilingEdge(new HexDownTriangle(this.tiling, this.a - 1, this.b - 1), 1); break;
                 case 5:
-                    return new TilingEdge(new UpTriangle(this.tiling, this.a, this.b), 0); break;
+                    return new TilingEdge(new HexUpTriangle(this.tiling, this.a, this.b), 0); break;
                 default: 
                     throw new Error("Called getOpposite() on a Hexagon with invalid i="+i);
             }

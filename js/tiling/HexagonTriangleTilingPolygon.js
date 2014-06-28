@@ -20,11 +20,7 @@ HexagonTriangleTilingPolygon.prototype = Object.create(TilingPolygon.prototype);
 HexagonTriangleTilingPolygon.prototype.getVertex = function(i){  
   return this.v[i].add(this.xt.scale(this.a)).add(this.yt.scale(this.b));
 }
-  
-HexagonTriangleTilingPolygon.prototype.tilingToString = function(){
-  return this.tiling.toString();
-}
-  
+   
 HexagonTriangleTilingPolygon.prototype.compareTo = function(p){
     return HexagonTriangleTiling.compare(this, p);
 }

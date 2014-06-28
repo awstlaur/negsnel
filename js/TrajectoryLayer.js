@@ -41,11 +41,12 @@ TrajectoryLayer.prototype.computeTrajectory = function(){
   this.polys = [];
   this.traj.push(this.s);
   var o = new Orbit(this.d.p, this.s, this.e);
-  while(this.traj.length <= this.L){
+  var keepGoing = true;
+  while(this.traj.length <= this.L && keepGoing){
    this.polys.push(o.getPolygon());
    var pt = o.next();
    if(pt == null){ // === null OR === undefined
-     break;
+     keepGoing = false;
    } else {
      this.traj.push(pt);
    }

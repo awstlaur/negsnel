@@ -1,11 +1,17 @@
-function Orbit(starting_polygon, start, end) {
+function Orbit(starting_polygon, start, end) {        
+    
         this.s = start;
         this.dir = end.subtract(this.s).normalize();
 
         this.edge = starting_polygon.getEdge(0); 
-        //these two while loops find the tiling edge the first ray is pointing to        
+        //these two while loops find the tiling edge the first ray is pointing to  
+        
         while (Geometry.triangleSign(end, this.edge.start(), this.s) <= 0) {
-            this.edge = this.edge.nextEdge();
+            this.edge = this.edge.nextEdge(); 
+            if(this.edge.getI() === 0){
+             throw new Error("WHAT IS HAPPENING") ;
+             break;
+            }
         }
         while (Geometry.triangleSign(end, this.edge.end(), this.s) > 0) {
             this.edge = this.edge.nextEdge();
@@ -23,7 +29,7 @@ function Orbit(starting_polygon, start, end) {
         while (Geometry.triangleSign(this.s, this.edge.end(), e) >= 0) {
             this.edge = this.edge.nextEdge();
             if (this.edge.getI() === first){// && !is_triangle) {                
-                throw new Error("Error: Failed to continue path due to numerical errors!");
+                console.log("Error: Failed to continue path due to numerical errors!");
                 return null;
             }
         }
