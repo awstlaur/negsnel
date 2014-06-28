@@ -1,4 +1,16 @@
 function test(){
+    
+    console.log("test!");
+    var hex = new HexagonTriangleTilingPolygon(new HexagonTriangleTiling(), 0,0);
+    console.log(hex.constructor.prototype);
+    
+    console.log("brick test!");
+    var squ = new Brick(new BrickTiling(0.5), 0,0);
+    console.log(squ.constructor.prototype);
+    
+    console.log(TilingPolygon.prototype);
+    
+    /*
   var scale = new AffineTransform()
   var translate = new AffineTransform();  
   scale.setScaleInstance(4,5);
@@ -28,10 +40,11 @@ function test(){
   var p1 = T1.transform(tp);
   var p2 = T2.transform(tp);
   console.log(p1.toString());
-  console.log(p2.toString());
+  console.log(p2.toString());*/
   
   
   /* path / bounding box */
+  /*
   var path = new GeneralPath();
   path.moveTo(2,3);
   path.lineTo(2,-2);
@@ -43,4 +56,5 @@ function test(){
   path.closePath();
   console.log(path.toString());
   console.log(path.getBoundingBox());
+  */
 }

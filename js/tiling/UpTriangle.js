@@ -5,16 +5,13 @@
 
 function UpTriangle(tiling, a, b){
     
-    TilingPolygon.call(this);
-    this.tiling = tiling;
-    this.a = a;
-    this.b = b;
+    HexagonTriangleTilingPolygon.call(this, tiling, a, b);
     
     
     /**
      * Upward pointing Triangle Vertices
      */
-    this.utv = [
+    this.v = [
         new Point(1, 0),
         new Point(.5, -Math.sqrt(3) / 2),
         new Point(1.5, -Math.sqrt(3) / 2)        
@@ -23,16 +20,12 @@ function UpTriangle(tiling, a, b){
 }
 
 
-UpTriangle.prototype = Object.create(TilingPolygon.prototype);
+UpTriangle.prototype = Object.create(HexagonTriangleTilingPolygon.prototype);
 
 UpTriangle.prototype.numSides = function(){
     return 3;
 }
- 
-UpTriangle.prototype.getVertex = function(i){
-  return this.utv[i].add(this.tiling.xt.scale(this.a)).add(this.tiling.yt.scale(this.b));
-}
-  
+   
 UpTriangle.prototype.getOpposite = function(i){
   switch (i) {
                 case 0:
@@ -44,12 +37,4 @@ UpTriangle.prototype.getOpposite = function(i){
                 default:
                     throw new Error("Called getOpposite() on a UpTriangle with invalid i="+i);
             }
-}
-  
-UpTriangle.prototype.tilingToString = function(){
-  return this.tiling.toString();
-}
-  
-UpTriangle.prototype.compareTo = function(p){
-    return HexagonTriangleTiling.compare(this, p);
 }

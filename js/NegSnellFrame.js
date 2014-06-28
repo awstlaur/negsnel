@@ -11,6 +11,7 @@ function NegSnellFrame(p, component){
 
   this.trajLayer = new TrajectoryLayer(this.d);
   
+  
   this.trajLayer.render();
   
   Mousetrap.bind('up', this.move.bind(this));
