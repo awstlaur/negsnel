@@ -35,18 +35,4 @@ Brick.prototype.getOpposite = function(i){
             default: 
                 throw new Error("Called getOpposite() with invalid i.");
         }
-}  
-  
-Brick.prototype.compareTo = function(p){
-  if (this.a > p.a){
-      return 1;
-  } else if (this.a < p.a){
-      return -1;
-  } else if (this.b > p.b){
-      return 1;
-  } else if (this.b < p.b){ 
-      return -1;
-  } else {
-      return 0;
-  }
 }

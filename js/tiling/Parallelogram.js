@@ -32,17 +32,3 @@ Parallelogram.prototype.getOpposite = function(i){
                 throw new Error("Called getOpposite() with invalid i.");
         }
 }  
-  
-Parallelogram.prototype.compareTo = function(p){
-  if (this.a > p.a){
-      return 1;
-  } else if (this.a < p.a){
-      return -1;
-  } else if (this.b > p.b){
-      return 1;
-  } else if (this.b < p.b){ 
-      return -1;
-  } else {
-      return 0;
-  }
-}

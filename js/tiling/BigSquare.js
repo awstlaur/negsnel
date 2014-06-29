@@ -36,18 +36,4 @@ BigSquare.prototype.getOpposite = function(i){
             default: 
                 System.err.println("Called getOpposite() with invalid i.");
         }
-}  
-  
-BigSquare.prototype.compareTo = function(p){
-    if (this.a > p.a)
-        return 1;
-    else if (this.a < p.a) 
-        return -1;
-    if (this.b > p.b)
-        return 1;
-    else if (this.b < p.b) 
-        return -1;
-    else if(p instanceof LittleSquare)
-        return -1;
-    return 0;
 }

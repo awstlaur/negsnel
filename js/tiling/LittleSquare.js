@@ -28,17 +28,3 @@ LittleSquare.prototype.getOpposite = function(i){
                     throw new Error("Called getOpposite() with invalid i.");
         }
 }  
-  
-LittleSquare.prototype.compareTo = function(p){
-            if (this.a > p.a)
-                return 1;
-            else if (this.a < p.a) 
-                return -1;
-            if (this.b > p.b)
-                return 1;
-            else if (this.b < p.b) 
-                return -1;
-            else if(p instanceof BigSquare)
-                return 1;
-            return 0;
-}
