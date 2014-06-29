@@ -26,10 +26,10 @@ LittleSquare.prototype.numSides = function(){
   
 LittleSquare.prototype.getOpposite = function(i){
   switch (i) {
-                case 0: return new TilingEdge(this.tiling.getBigSquare(this.a,this.b-1), 4);
-                case 1: return new TilingEdge(this.tiling.getBigSquare(this.a+1,this.b-1), 6);
-                case 2: return new TilingEdge(this.tiling.getBigSquare(this.a+1,this.b), 0);
-                case 3: return new TilingEdge(this.tiling.getBigSquare(this.a,this.b), 2);
+                case 0: return new TilingEdge(new BigSquare(this.tiling, this.a,this.b-1), 4);
+                case 1: return new TilingEdge(new BigSquare(this.tiling, this.a+1,this.b-1), 6);
+                case 2: return new TilingEdge(new BigSquare(this.tiling, this.a+1,this.b), 0);
+                case 3: return new TilingEdge(new BigSquare(this.tiling, this.a,this.b), 2);
                 default: 
                     throw new Error("Called getOpposite() with invalid i.");
         }

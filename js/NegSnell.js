@@ -1,4 +1,4 @@
-function NegSnell(){   
+function NegSnell(t){   
    var canvas = document.getElementById("raphael-canvas");
    var width = window.innerWidth;
    var height = window.innerHeight;
@@ -21,9 +21,7 @@ function NegSnell(){
 //         text = target.textContent || text.innerText; 
 //     console.log(target, target.className, target.id);
 // }, false);
-   
-   
-  var t = new TriangleTiling(0.3,1.3);
+      
   var frame = new NegSnellFrame(t.getOriginPolygon(), c);    
   
 }

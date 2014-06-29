@@ -35,14 +35,14 @@ BigSquare.prototype.numSides = function(){
   
 BigSquare.prototype.getOpposite = function(i){
   switch (i) {
-            case 0: return new TilingEdge(this.tiling.getLittleSquare(this.a-1, this.b),2); break;
-            case 1: return new TilingEdge(this.tiling.getBigSquare(this.a, this.b-1),5); break;
-            case 2: return new TilingEdge(this.tiling.getLittleSquare(this.a, this.b),3); break;
-            case 3: return new TilingEdge(this.tiling.getBigSquare(this.a+1,this.b), 7); break;
-            case 4: return new TilingEdge(this.tiling.getLittleSquare(this.a,this.b+1), 4); break;
-            case 5: return new TilingEdge(this.tiling.getBigSquare(this.a,this.b+1), 1); break;
-            case 6: return new TilingEdge(this.tiling.getLittleSquare(this.a-1,this.b+1), 1); break;
-            case 7: return new TilingEdge(this.tiling.getBigSquare(this.a-1,this.b), 3); break;
+            case 0: return new TilingEdge(new LittleSquare(this.tiling, this.a-1, this.b),2); break;
+            case 1: return new TilingEdge(new BigSquare(this.tiling, this.a, this.b-1),5); break;
+            case 2: return new TilingEdge(new LittleSquare(this.tiling, this.a, this.b),3); break;
+            case 3: return new TilingEdge(new BigSquare(this.tiling, this.a+1,this.b), 7); break;
+            case 4: return new TilingEdge(new LittleSquare(this.tiling, this.a,this.b+1), 4); break;
+            case 5: return new TilingEdge(new BigSquare(this.tiling, this.a,this.b+1), 1); break;
+            case 6: return new TilingEdge(new LittleSquare(this.tiling, this.a-1,this.b+1), 1); break;
+            case 7: return new TilingEdge(new BigSquare(this.tiling, this.a-1,this.b), 3); break;
             default: 
                 System.err.println("Called getOpposite() with invalid i.");
         }
