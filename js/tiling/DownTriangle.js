@@ -4,7 +4,14 @@
 
 
 function DownTriangle(tiling, a, b){    
-    TriangleTilingPolygon.call(this, tiling, a, b);          
+    TriangleTilingPolygon.call(this, tiling, a, b); 
+  this.v = [
+    new Point(1,0),
+    new Point(this.tiling.x+1, this.tiling.y),
+    new Point(this.tiling.x, this.tiling.y)
+  ];
+  this.xt = new Point(1,0);
+  this.yt = new Point(this.tiling.x, this.tiling.y);
 }
 
 
@@ -22,14 +29,4 @@ DownTriangle.prototype.getOpposite = function(i){
         default:
             throw new Error("Called getOpposite() on a DownTriangle with invalid i="+i);
             }
-}
-
-DownTriangle.prototype.getVertex = function(i){
-    switch (i) {
-        case 0: return new Point(this.a+this.b*this.tiling.x+1, this.b*this.tiling.y);
-        case 1: return new Point(this.a+(this.b+1)*this.tiling.x +1, (this.b+1)*this.tiling.y);
-        case 2: return new Point(this.a+(this.b+1)*this.tiling.x,(this.b+1)*this.tiling.y);
-        default: 
-            throw new Error("Called getVertex() with invalid i.");
-    }
 }

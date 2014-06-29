@@ -4,7 +4,15 @@
 
 
 function UpTriangle(tiling, a, b){    
-    TriangleTilingPolygon.call(this, tiling, a, b);          
+    TriangleTilingPolygon.call(this, tiling, a, b);
+    
+  this.v = [
+    new Point(0,0),
+    new Point(1,0),
+    new Point(this.tiling.x, this.tiling.y)
+  ];
+  this.xt = new Point(1,0);
+  this.yt = new Point(this.tiling.x, this.tiling.y);
 }
 
 
@@ -22,14 +30,4 @@ UpTriangle.prototype.getOpposite = function(i){
         default:
             throw new Error("Called getOpposite() on a UpTriangle with invalid i="+i);
             }
-}
-
-UpTriangle.prototype.getVertex = function(i){
-    switch (i) {
-        case 0: return new Point(this.a+this.b*this.tiling.x, this.b*this.tiling.y);
-        case 1: return new Point(this.a+this.b*this.tiling.x+1, this.b*this.tiling.y);
-        case 2: return new Point(this.a+(this.b+1)*this.tiling.x,(this.b+1)*this.tiling.y);
-        default: 
-            throw new Error("Called getVertex() with invalid i.");
-    }
 }

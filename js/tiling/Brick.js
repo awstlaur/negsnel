@@ -3,7 +3,7 @@ function Brick(tiling,a,b){
   this.tiling = tiling;
   this.a = a;
   this.b = b;
-   this.v = [
+  this.v = [
     new Point(0,0),
     new Point(this.tiling.t,0),
     new Point(1,0),
