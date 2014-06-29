@@ -23,8 +23,8 @@ function NegSnell(){
 }, false);
    
    
-  var t = new OctagonSquareTiling();
-  var frame = new NegSnellFrame(t.getOctagon(0,0), c);
+  var t = new TriangleTiling(0.5,0.5);
+  var frame = new NegSnellFrame(t.getUpTriangle(0,0), c);
   
   //document.onkeypress = keypressHandler(event);
   

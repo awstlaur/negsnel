@@ -28,12 +28,12 @@ HexDownTriangle.prototype.numSides = function(){
 HexDownTriangle.prototype.getOpposite = function(i){
   switch (i) {
         case 0:
-            return new TilingEdge(new Hexagon(this.tiling, this.a + 1, this.b), 2);
+            return new TilingEdge(new Hexagon(this.tiling, this.a + 1, this.b), 2); break;
         case 1:
-            return new TilingEdge(new Hexagon(this.tiling, this.a + 1, this.b + 1), 4);
+            return new TilingEdge(new Hexagon(this.tiling, this.a + 1, this.b + 1), 4); break;
         case 2:
-            return new TilingEdge(new Hexagon(this.tiling, this.a, this.b), 0);
+            return new TilingEdge(new Hexagon(this.tiling, this.a, this.b), 0); break;
         default:
-            throw new Error("Called getOpposite() on a UpTriangle with invalid i="+i);
+            throw new Error("Called getOpposite() on a HexDownTriangle with invalid i="+i);
             }
 }
