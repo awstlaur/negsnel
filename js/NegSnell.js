@@ -23,8 +23,8 @@ function NegSnell(){
 }, false);
    
    
-  var t = new BrickTiling(0.3);
-  var frame = new NegSnellFrame(t.getBrick(0,0), c);
+  var t = new ParallelogramTiling(.3,1.3);
+  var frame = new NegSnellFrame(t.getParallelogram(0,0), c);
   
   //document.onkeypress = keypressHandler(event);
   
