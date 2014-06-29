@@ -57,6 +57,8 @@ TrajectoryLayer.prototype.computeTrajectory = function(){
 TrajectoryLayer.prototype.render = function(){
  this.computeTrajectory();
  
+ console.log(this.polys);
+ 
  var self = this;
  this.polys.forEach(function(poly){
     var path = self.d.component.paper.path(poly.getPath().toString());

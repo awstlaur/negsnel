@@ -1,14 +1,5 @@
 function HexagonTriangleTiling(){    
     
-    /**
-     * Horizontal translation
-     */
-    this.xt = new Point(2, 0);
-    /**
-     * Vertical translation
-     */
-    this.yt = new Point(-1, Math.sqrt(3));
-    
 }
 
 HexagonTriangleTiling.prototype.getHexagon = function(a,b){
