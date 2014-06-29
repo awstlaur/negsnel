@@ -2,8 +2,8 @@ function BrickTiling(t){
  this.t = t; 
 }
 
-BrickTiling.prototype.getBrick = function(a,b){
- return new Brick(this, a,b); 
+BrickTiling.prototype.getOriginPolygon = function(){
+ return new Brick(this,0,0); 
 }
 
 BrickTiling.prototype.toString = function(){

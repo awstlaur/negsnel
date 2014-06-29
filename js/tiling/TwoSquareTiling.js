@@ -13,9 +13,9 @@ function TwoSquareTiling(length1, length2) {
 TwoSquareTiling.prototype.toString = function(){
     return "TwoSquareTiling " + m + " " + n;
 }
-TwoSquareTiling.prototype.getBigSquare = function(a,b) {
-    return new BigSquare(this, a, b);
+TwoSquareTiling.prototype.getOriginPolygon = function() {
+    return new BigSquare(this, 0,0);
 }
-TwoSquareTiling.prototype.getLittleSquare = function(a,b) {
-    return new LittleSquare(this, a, b);
-}
+// TwoSquareTiling.prototype.getLittleSquare = function(a,b) {
+//     return new LittleSquare(this, a, b);
+// }

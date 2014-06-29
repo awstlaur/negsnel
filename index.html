@@ -91,7 +91,7 @@
              <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Save As</a></li>
                 <li><a href="#">Open</a></li>
-                <li><a href="#">New Parallelogram Tiling</a></li>
+                <li><a href="#" id="parallelogram">New Parallelogram Tiling</a></li>
                 <li><a href="#">New Triangle Tiling</a></li>
                 <li><a href="#">New Triangle Tiling [angles]</a></li>
                 <li><a href="#">New Brick Tiling</a></li>                
@@ -121,7 +121,10 @@
       </div>
     </div>    
       <script>
-        //NegSnell();        
+        $("#parallelogram").click(function(e) {
+            e.preventDefault();
+            NegSnell();
+        });       
       </script>      
   </body>
 </html>

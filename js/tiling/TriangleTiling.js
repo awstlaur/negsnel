@@ -6,6 +6,6 @@ function TriangleTiling(x,y){
  this.y = y;
 }
 
-TriangleTiling.prototype.getUpTriangle = function(a,b){
- return new UpTriangle(this, a, b);   
+TriangleTiling.prototype.getOriginPolygon = function(){
+ return new UpTriangle(this, 0,0);   
 }

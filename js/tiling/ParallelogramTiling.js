@@ -3,8 +3,8 @@ function ParallelogramTiling(x, y){
  this.y = y;
 }
 
-ParallelogramTiling.prototype.getParallelogram = function(a,b){
- return new Parallelogram(this,a,b); 
+ParallelogramTiling.prototype.getOriginPolygon = function(){
+ return new Parallelogram(this,0,0); 
 }
 
 ParallelogramTiling.prototype.toString = function(){

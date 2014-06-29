@@ -2,8 +2,8 @@ function OctagonSquareTiling(){
     
 }
 
-OctagonSquareTiling.prototype.getOctagon = function(a,b){
- return new Octagon(this,a,b); 
+OctagonSquareTiling.prototype.getOriginPolygon = function(){
+ return new Octagon(this,0,0); 
 }
 
 OctagonSquareTiling.prototype.toString = function(){

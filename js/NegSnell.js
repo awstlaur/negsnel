@@ -15,20 +15,16 @@ function NegSnell(){
    var c = new Component(paper);
    c.setBackgroundColor(config.backgroundColor);
   
-   document.addEventListener('click', function(e) {
-    e = e || window.event;
-    var target = e.target || e.srcElement,
-        text = target.textContent || text.innerText; 
-    console.log(target, target.className, target.id);
-}, false);
+//    document.addEventListener('click', function(e) {
+//     e = e || window.event;
+//     var target = e.target || e.srcElement,
+//         text = target.textContent || text.innerText; 
+//     console.log(target, target.className, target.id);
+// }, false);
    
    
   var t = new TriangleTiling(0.3,1.3);
-  var frame = new NegSnellFrame(t.getUpTriangle(0,0), c);
-  
-  //document.onkeypress = keypressHandler(event);
-  
-  //document.onkeyup = keypressHandler(event)
+  var frame = new NegSnellFrame(t.getOriginPolygon(), c);    
   
 }
 
