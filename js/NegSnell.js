@@ -1,15 +1,14 @@
 function NegSnell(t){   
-   var canvas = document.getElementById("raphael-canvas");
    var width = window.innerWidth;
    var height = window.innerHeight;
    
    //canvas.style.height = height;
    //canvas.style.width = .8*width;
    
-   var RX = .1*width;
-   var RY = .1*height;
-   var RW = .8*width;
-   var RH = .8*height;
+   //var RX = .1*width;
+   //var RY = .1*height;
+   //var RW = .8*width;
+   //var RH = .8*height;
    var paper = Raphael(0,0,width,height);
 
    var c = new Component(paper);
