@@ -24,17 +24,19 @@ function dialog(id){
         e.preventDefault(); 
         $('#modal-form').submit();
     });
-    $('#my-modal').on('hidden.bs.modal', function(e){  
-        console.log("hidden");
+    $('#my-modal').on('hidden.bs.modal', function(e){          
         $('#modal-form').find("input[type=text], textarea").val("");
     });
     $('#modal-form').on('submit', function(e){
         e.preventDefault();        
-        $("#my-modal").modal('hide');        
-        NegSnell(new TriangleTiling(0.5,0.3));        
-        
+                
+        var nameValueArray = $(this).serializeArray();
+        nameValueArray.forEach(function(nvObject){
+         nvObject.value = parseFloat(nvObject.value);
+         userError("wrong", nvObject.name);
+        });                        
 
-        
+        //$("#my-modal").modal('hide');
     });
     
     /* show time! */
@@ -48,10 +50,18 @@ function getHTML(data){
     out += "<div class=\"input-group\">";
     out += "<span class=\"input-group-addon\">";
     out += p.name;
-    out += "</span>"
-    out += "<input type=\"text\" class=\"form-control\" placeholder=\"";
+    out += "</span>";
+    out += "<input name = \"";
+    out += p.placeholder;
+    out += "\" type=\"text\" class=\"form-control\" placeholder=\"";
     out += p.placeholder;
     out += "\"></div></div>";
  });
  return out;   
+}
+
+function userError(message, inputname){  
+  var formGroup = $("input[name=" + inputname +"]").parent(".input-group").parent(".form-group");
+  formGroup.addClass("has-feedback has-error");
+  formGroup.children(".input-group").append("<span class=\"glyphicon glyphicon-remove form-control-feedback\"></span>");
 }

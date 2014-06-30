@@ -10,3 +10,9 @@ ParallelogramTiling.prototype.getOriginPolygon = function(){
 ParallelogramTiling.prototype.toString = function(){
  return "ParallelogramTiling " + this.x.toString() + " " + this.y.toString();
 }
+
+Parallelogram.prototype.fromParameters = function(id, params){
+    var L = params[0];
+    var theta = params[1];
+    return new ParallelogramTiling(L*Math.cos(theta*Math.PI/180),L*Math.sin(theta*Math.PI/180));        
+}

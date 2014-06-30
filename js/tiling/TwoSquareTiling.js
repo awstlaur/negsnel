@@ -16,6 +16,12 @@ TwoSquareTiling.prototype.toString = function(){
 TwoSquareTiling.prototype.getOriginPolygon = function() {
     return new BigSquare(this, 0,0);
 }
-// TwoSquareTiling.prototype.getLittleSquare = function(a,b) {
-//     return new LittleSquare(this, a, b);
-// }
+
+TwoSquareTiling.prototype.fromParameters = function(id, params){
+  L1 = params[0];
+  L2 = params[1];
+  if(L1 !== L2)
+    return new TwoSquareTiling(L1, L2);
+  else
+    return new BrickTiling(0);
+}

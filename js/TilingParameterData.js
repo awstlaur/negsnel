@@ -1,15 +1,23 @@
 var TilingParameterData={
     parallelogram:{
      name:"Parallelogram Tiling",
-     message: "This window sets the tiling to the standard tiling by parallelograms with sides of length 1 and L, and an angle &#952; measured in degrees.",
+     message: "This window sets the tiling to the standard tiling by parallelograms with sides of length 1 and L, and an angle &#952; measured in degrees.",     
      parameters:[
         {
          name: "Length",
-         placeholder: "L"
+         placeholder: "L",
+         minInclusive: Number.NEGATIVE_INFINITY,
+         minExclusive: Number.NEGATIVE_INFINITY,
+         maxInclusive: Number.POSITIVE_INFINITY,
+         maxExclusive: Number.POSITIVE_INFINITY
         },
         {
          name: "Angle",
-         placeholder: "&#952;",         
+         placeholder: "&#952;",
+         minInclusive: 0,
+         minExclusive: 0,
+         maxInclusive: 180,
+         maxExclusive: 180
         }
      ],
     },
@@ -20,11 +28,19 @@ var TilingParameterData={
      parameters:[
         {
          name: "Length",
-         placeholder: "L"
+         placeholder: "L",
+         minInclusive: Number.NEGATIVE_INFINITY,
+         minExclusive: Number.NEGATIVE_INFINITY,
+         maxInclusive: Number.POSITIVE_INFINITY,
+         maxExclusive: Number.POSITIVE_INFINITY         
         },
         {
          name: "Angle",
-         placeholder: "&#952;"
+         placeholder: "&#952;",
+         minInclusive: 0,
+         minExclusive: 0,
+         maxInclusive: 180,
+         maxExclusive: 180         
         }
      ],
     },
@@ -35,11 +51,19 @@ var TilingParameterData={
      parameters:[
         {
          name: "Angle &#966;",
-         placeholder: "&#966;"
+         placeholder: "&#966;",
+         minInclusive: 0,
+         minExclusive: 0,
+         maxInclusive: 180,
+         maxExclusive: 180         
         },
         {
          name: "Angle &#952;",
-         placeholder: "&#952;"
+         placeholder: "&#952;",
+         minInclusive: 0,
+         minExclusive: 0,
+         maxInclusive: 180,
+         maxExclusive: 180         
         }
      ],
     },
@@ -50,7 +74,11 @@ var TilingParameterData={
      parameters:[
         {
          name: "Offset",
-         placeholder: "T"
+         placeholder: "T",
+         minInclusive: 0,
+         minExclusive: 0,
+         maxInclusive: 1,
+         maxExclusive: 1          
         }
      ],
     },
@@ -61,11 +89,19 @@ var TilingParameterData={
      parameters:[
         {
          name: "Length 1",
-         placeholder: "L_1"
+         placeholder: "L_1",
+         minInclusive: Number.NEGATIVE_INFINITY,
+         minExclusive: Number.NEGATIVE_INFINITY,
+         maxInclusive: Number.POSITIVE_INFINITY,
+         maxExclusive: Number.POSITIVE_INFINITY         
         },
         {
          name: "Length 2",
-         placeholder: "L_2"
+         placeholder: "L_2",
+         minInclusive: Number.NEGATIVE_INFINITY,
+         minExclusive: Number.NEGATIVE_INFINITY,
+         maxInclusive: Number.POSITIVE_INFINITY,
+         maxExclusive: Number.POSITIVE_INFINITY         
         }        
      ],
     }    

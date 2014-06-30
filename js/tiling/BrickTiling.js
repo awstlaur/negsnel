@@ -9,3 +9,8 @@ BrickTiling.prototype.getOriginPolygon = function(){
 BrickTiling.prototype.toString = function(){
  return "BrickTiling " + this.t.toString(); 
 }
+
+BrickTiling.prototype.fromParameters = function(id, params){
+ var t = params[0];
+ return new BrickTiling(t);   
+}

@@ -9,3 +9,15 @@
   background-color: transparent;
   color: #999999;
 }
+
+.has-feedback .form-control-feedback {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    z-index:2;
+}
