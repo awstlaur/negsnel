@@ -33,8 +33,21 @@ function dialog(id){
         var nameValueArray = $(this).serializeArray();
         nameValueArray.forEach(function(nvObject){
          nvObject.value = parseFloat(nvObject.value);
-         userError("wrong", nvObject.name);
-        });                        
+         if(isNaN(nvObject.value)){
+             userError(nvObject.name + " must be a real number!", nvObject.name);
+         }else{
+             var parameter = findParameterByID(data.parameters, nvObject.name);
+             if(outOfBounds(parameter, nvObject.value)){
+                 userError(parameter.placeholder + " is out of bounds!", nvObject.name);
+             }
+             
+         }
+        });
+        console.log(nameValueArray);
+        
+        //for(parameter in data.parameters){
+          //console.log(nameValueArray[parameter.name])
+         //}
 
         //$("#my-modal").modal('hide');
     });
@@ -52,7 +65,7 @@ function getHTML(data){
     out += p.name;
     out += "</span>";
     out += "<input name = \"";
-    out += p.placeholder;
+    out += p.id;
     out += "\" type=\"text\" class=\"form-control\" placeholder=\"";
     out += p.placeholder;
     out += "\"></div></div>";
@@ -64,4 +77,19 @@ function userError(message, inputname){
   var formGroup = $("input[name=" + inputname +"]").parent(".input-group").parent(".form-group");
   formGroup.addClass("has-feedback has-error");
   formGroup.children(".input-group").append("<span class=\"glyphicon glyphicon-remove form-control-feedback\"></span>");
+  $("#modal-form").append("<span style=\"color:red\">" + message + "</span><br>");
+}
+
+function findParameterByID(parameters, id){
+ for(i in parameters){
+     var p = parameters[i];
+     console.log(p.id + " ?=? " + id);
+  if(p.id===id) return p;
+ }
+ throw new Error('findParameterByPlaceholder called when no parameter had placeholder');
+}
+
+function outOfBounds(parameter, value){
+    return !(value >= parameter.minInclusive && value > parameter.minExclusive
+          && value <= parameter.maxInclusive && value < parameter.maxExclusive);
 }

@@ -6,14 +6,16 @@ var TilingParameterData={
         {
          name: "Length",
          placeholder: "L",
-         minInclusive: Number.NEGATIVE_INFINITY,
-         minExclusive: Number.NEGATIVE_INFINITY,
+         id: "L",
+         minInclusive: 0,
+         minExclusive: 0,
          maxInclusive: Number.POSITIVE_INFINITY,
          maxExclusive: Number.POSITIVE_INFINITY
         },
         {
          name: "Angle",
          placeholder: "&#952;",
+         id: "theta",         
          minInclusive: 0,
          minExclusive: 0,
          maxInclusive: 180,
@@ -29,14 +31,16 @@ var TilingParameterData={
         {
          name: "Length",
          placeholder: "L",
-         minInclusive: Number.NEGATIVE_INFINITY,
-         minExclusive: Number.NEGATIVE_INFINITY,
+         id: "L",
+         minInclusive: 0,
+         minExclusive: 0,
          maxInclusive: Number.POSITIVE_INFINITY,
          maxExclusive: Number.POSITIVE_INFINITY         
         },
         {
          name: "Angle",
          placeholder: "&#952;",
+         id: "theta",
          minInclusive: 0,
          minExclusive: 0,
          maxInclusive: 180,
@@ -52,6 +56,7 @@ var TilingParameterData={
         {
          name: "Angle &#966;",
          placeholder: "&#966;",
+         id: "phi",
          minInclusive: 0,
          minExclusive: 0,
          maxInclusive: 180,
@@ -60,6 +65,7 @@ var TilingParameterData={
         {
          name: "Angle &#952;",
          placeholder: "&#952;",
+         id: "theta",
          minInclusive: 0,
          minExclusive: 0,
          maxInclusive: 180,
@@ -75,9 +81,10 @@ var TilingParameterData={
         {
          name: "Offset",
          placeholder: "T",
-         minInclusive: 0,
+         id: "T",
+         minInclusive: Number.NEGATIVE_INFINITY,
          minExclusive: 0,
-         maxInclusive: 1,
+         maxInclusive: Number.POSITIVE_INFINITY,
          maxExclusive: 1          
         }
      ],
@@ -90,16 +97,18 @@ var TilingParameterData={
         {
          name: "Length 1",
          placeholder: "L_1",
-         minInclusive: Number.NEGATIVE_INFINITY,
-         minExclusive: Number.NEGATIVE_INFINITY,
+         id: "L_1",
+         minInclusive: 0,
+         minExclusive: 0,
          maxInclusive: Number.POSITIVE_INFINITY,
          maxExclusive: Number.POSITIVE_INFINITY         
         },
         {
          name: "Length 2",
          placeholder: "L_2",
-         minInclusive: Number.NEGATIVE_INFINITY,
-         minExclusive: Number.NEGATIVE_INFINITY,
+         id: "L_2",
+         minInclusive: 0,
+         minExclusive: 0,
          maxInclusive: Number.POSITIVE_INFINITY,
          maxExclusive: Number.POSITIVE_INFINITY         
         }        
