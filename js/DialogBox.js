@@ -54,8 +54,8 @@ function dialog(id){
         });
         if(submit){
             var params = nameValueArray.map(function(nvPair){return nvPair.value});
-            //console.log(id);
-            //$("#my-modal").modal('hide');
+            var newTiling = new TilingParameterData[id].tiling(params);
+            NegSnell(newTiling);
         }
     });
     

@@ -22,6 +22,7 @@ var TilingParameterData={
          maxExclusive: 180
         }
      ],
+     tiling: ParallelogramTiling.prototype.fromParameters
     },
   
     triangle:{
@@ -47,6 +48,7 @@ var TilingParameterData={
          maxExclusive: 180         
         }
      ],
+     tiling: TriangleTiling.prototype.fromParameters
     },
     
     'triangle-angles':{
@@ -72,6 +74,7 @@ var TilingParameterData={
          maxExclusive: 180         
         }
      ],
+     tiling: TriangleTiling.prototype.fromAngles
     },
 
     brick:{
@@ -82,12 +85,13 @@ var TilingParameterData={
          name: "Offset",
          placeholder: "T",
          id: "T",
-         minInclusive: Number.NEGATIVE_INFINITY,
-         minExclusive: 0,
-         maxInclusive: Number.POSITIVE_INFINITY,
-         maxExclusive: 1          
+         minInclusive: 0,
+         minExclusive: Number.NEGATIVE_INFINITY,
+         maxInclusive: 1,
+         maxExclusive: Number.POSITIVE_INFINITY          
         }
      ],
+     tiling: BrickTiling.prototype.fromParameters
     },
 
     'two-square':{
@@ -113,5 +117,6 @@ var TilingParameterData={
          maxExclusive: Number.POSITIVE_INFINITY         
         }        
      ],
+    tiling: TwoSquareTiling.prototype.fromParameters
     }    
 }

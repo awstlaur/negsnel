@@ -1,5 +1,5 @@
 function NegSnell(t){
-   console.log('NegSnell');
+   //console.log('NegSnell');
    var width = window.innerWidth;
    var height = window.innerHeight;
    
