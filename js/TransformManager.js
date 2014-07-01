@@ -99,7 +99,7 @@ TransformManager.prototype.shiftUp = function(shift){
  var amt = this.displayBox.getHeight()*config.screenShift;
       this.setDisplayBox(new Rectangle(
           this.displayBox.getX(),
-          this.displayBox.getY()+shift*amt,
+          this.displayBox.getY()-shift*amt,
           this.displayBox.getWidth(),
           this.displayBox.getHeight()));  
 }
@@ -107,7 +107,7 @@ TransformManager.prototype.shiftUp = function(shift){
 TransformManager.prototype.shiftRight = function(shift){
  var amt = this.displayBox.getWidth()*config.screenShift;
       this.setDisplayBox(new Rectangle(
-          this.displayBox.getX()-shift*amt,
+          this.displayBox.getX()+shift*amt,
           this.displayBox.getY(),
           this.displayBox.getWidth(),
           this.displayBox.getHeight()));  

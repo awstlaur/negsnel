@@ -56,6 +56,7 @@ function dialog(id){
             var params = nameValueArray.map(function(nvPair){return nvPair.value});
             var newTiling = new TilingParameterData[id].tiling(params);
             NegSnell(newTiling);
+            $('#my-modal').modal('hide');
         }
     });
     
