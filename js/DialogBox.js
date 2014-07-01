@@ -14,6 +14,7 @@ function dialog(id){
     //$('#myModal > .modal-dialog > .modal-content > .modal-body').html(id);
     
     var data = TilingParameterData[id];
+    $("#error-messages").empty();
     
     $('#my-modal-label').html(data.name + " Parameter");
     $('#modal-form').html(getHTML(data));
@@ -24,32 +25,38 @@ function dialog(id){
         e.preventDefault(); 
         $('#modal-form').submit();
     });
+    
     $('#my-modal').on('hidden.bs.modal', function(e){          
         $('#modal-form').find("input[type=text], textarea").val("");
     });
-    $('#modal-form').on('submit', function(e){
-        e.preventDefault();        
-                
+    
+    $('#modal-form').unbind('submit').on('submit', function(e){
+        e.preventDefault();           
+        var submit = true;        
         var nameValueArray = $(this).serializeArray();
+        $("#error-messages").empty();
+        //console.log(nameValueArray);
+        
         nameValueArray.forEach(function(nvObject){
-         nvObject.value = parseFloat(nvObject.value);
+         nvObject.value = parseFloat(nvObject.value);         
          if(isNaN(nvObject.value)){
              userError(nvObject.name + " must be a real number!", nvObject.name);
+             submit = false;
          }else{
              var parameter = findParameterByID(data.parameters, nvObject.name);
              if(outOfBounds(parameter, nvObject.value)){
                  userError(parameter.placeholder + " is out of bounds!", nvObject.name);
-             }
-             
+                 submit = false;
+             }else{
+                 userSuccess(nvObject.name);   
+             }             
          }
         });
-        console.log(nameValueArray);
-        
-        //for(parameter in data.parameters){
-          //console.log(nameValueArray[parameter.name])
-         //}
-
-        //$("#my-modal").modal('hide');
+        if(submit){
+            var params = nameValueArray.map(function(nvPair){return nvPair.value});
+            //console.log(id);
+            //$("#my-modal").modal('hide');
+        }
     });
     
     /* show time! */
@@ -67,26 +74,43 @@ function getHTML(data){
     out += "<input name = \"";
     out += p.id;
     out += "\" type=\"text\" class=\"form-control\" placeholder=\"";
-    out += p.placeholder;
-    out += "\"></div></div>";
+    out += p.placeholder + "\">";
+    out += "<span class=\"glyphicon form-control-feedback\"></span>";
+    out += "</div>"; //end input-group    
+    out += "</div>"; //end form-group
  });
  return out;   
 }
 
 function userError(message, inputname){  
   var formGroup = $("input[name=" + inputname +"]").parent(".input-group").parent(".form-group");
+  formGroup.removeClass("has-success");
   formGroup.addClass("has-feedback has-error");
-  formGroup.children(".input-group").append("<span class=\"glyphicon glyphicon-remove form-control-feedback\"></span>");
-  $("#modal-form").append("<span style=\"color:red\">" + message + "</span><br>");
+  //formGroup.children(".input-group").append("<span class=\"glyphicon glyphicon-remove form-control-feedback\"></span>");
+  //console.log(formGroup.children(".input-group"))  
+  formGroup.children(".input-group").children(".glyphicon").removeClass("glyphicon-ok");
+  formGroup.children(".input-group").children(".glyphicon").addClass("glyphicon-remove");
+  $("#error-messages").append("<span id=\"" + inputname + "\">" + message + "</span><br>");
+}
+
+function userSuccess(inputname){
+    var formGroup = $("input[name=" + inputname +"]").parent(".input-group").parent(".form-group");
+    formGroup.removeClass("has-error");
+    formGroup.addClass("has-feedback has-success");
+    formGroup.children(".input-group").children(".glyphicon").removeClass("glyphicon-remove");
+    formGroup.children(".input-group").children(".glyphicon").addClass("glyphicon-ok");
+    
+    //console.log($("#error-messages > #" + inputname));
+    $("#error-messages > #" + inputname).remove();
 }
 
 function findParameterByID(parameters, id){
  for(i in parameters){
      var p = parameters[i];
-     console.log(p.id + " ?=? " + id);
-  if(p.id===id) return p;
+     //console.log(p.id + " ?=? " + id);
+     if(p.id===id) return p;
  }
- throw new Error('findParameterByPlaceholder called when no parameter had placeholder');
+ throw new Error('findParameterByID called when no parameter had ID');
 }
 
 function outOfBounds(parameter, value){
