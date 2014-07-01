@@ -1,9 +1,9 @@
 function DialogBox(id){
     switch(id){
         case "hexagon-triangle":
-            NegSnell(new HexagonTriangleTiling()); break;
+            window.currentFrame =  NegSnell(new HexagonTriangleTiling()); break;
         case "octagon-square":
-            NegSnell(new OctagonSquareTiling()); break;
+            window.currentFrame =  NegSnell(new OctagonSquareTiling()); break;
         default: 
             dialog(id);
         
@@ -54,9 +54,9 @@ function dialog(id){
         });
         if(submit){
             var params = nameValueArray.map(function(nvPair){return nvPair.value});
-            var newTiling = new TilingParameterData[id].tiling(params);
-            NegSnell(newTiling);
+            var newTiling = new TilingParameterData[id].tiling(params);            
             $('#my-modal').modal('hide');
+            window.currentFrame = NegSnell(newTiling);
         }
     });
     

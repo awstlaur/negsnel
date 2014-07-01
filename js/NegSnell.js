@@ -22,7 +22,7 @@ function NegSnell(t){
 //     console.log(target, target.className, target.id);
 // }, false);
       
-  var frame = new NegSnellFrame(t.getOriginPolygon(), c);    
+  return frame = new NegSnellFrame(t.getOriginPolygon(), c);    
   
 }
 

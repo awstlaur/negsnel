@@ -1,6 +1,6 @@
 var config = {
 
-  initialDisplayBoxScale: 2,
+  initialDisplayBoxScale: 5,
   nudgeAmt: .015,
   screenShift: .02,
   trajectoryEndpointRadius: 5,
