@@ -25,3 +25,34 @@
 #error-messages {
     color:red;
 }
+
+#help-popup {
+position  : absolute;
+top   : 80px;
+left    : 10px;
+z-index   : 2;
+
+
+font-size : 100%;
+width: 30%;
+
+
+/*color   : #BDBDBD;*/
+color: black;
+
+/*background  : rgba(0,0,0,0.5);*/
+/*background: #cdc0b4; */
+
+padding   : 15px;
+padding-top : 5px;
+padding-bottom  : 5px;
+
+
+border-radius : 10px;
+border-color  : black;
+border-style  : solid;
+border-width  : 2px;  
+}
+#help-popup a {
+color   : blue; /*#8888ff;  */
+}
