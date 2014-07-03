@@ -78,6 +78,10 @@ NegSnellFrame.prototype.zoom = function(e, combo){
   this.trajLayer.render2();
 }
 
+NegSnellFrame.prototype.setZoomBox = function(){
+ this.zoomBox = this.d.component.paper.rect(0,0,0,0);
+}
+
 NegSnellFrame.prototype.moveTrajPoints = function(e, combo){
   var combos = combo.split('+');
   var alsoStartPoint = (combos.length === 2);
@@ -112,7 +116,7 @@ NegSnellFrame.prototype.mouseEvent = function(e){
         
       }
       if(e.shiftKey){
-       console.log("math point",this.d.tm.toMathCoordinates(new Point(e.clientX, e.clientY))); 
+       //console.log("math point",this.d.tm.toMathCoordinates(new Point(e.clientX, e.clientY))); 
       }
       break; 
     case "mousemove":

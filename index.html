@@ -109,7 +109,7 @@
              <ul class="dropdown-menu" role="menu">
                 <li><a id = "zoom-out"    href="#">Zoom Out</a></li>                
                 <li><a id = "zoom-in"     href="#">Zoom In</a></li>
-                <li><a id = "zoom-in-box" href="#">Zoom In (draw box)</a></li>
+                <li><a id = "zoom-reset" href="#">Reset View</a></li>
              </ul>                        
             </li>
             <li class="dropdown">
@@ -161,13 +161,15 @@
         });
         $("#zoom-out").click(function(e){
             e.preventDefault();   
-            console.log(window.currentFrame);
+            window.currentFrame.zoom(null, 'o');
         });
         $("#zoom-in").click(function(e){
-            e.preventDefault();            
+            e.preventDefault();
+            window.currentFrame.zoom(null, 'i');
         });
-        $("#zoom-in-box").click(function(e){
-            e.preventDefault();            
+        $("#zoom-reset").click(function(e){
+            e.preventDefault();
+            window.currentFrame.zoom(null, 'r');
         }); 
         $("#save-as").click(function(e){
             e.preventDefault();            
