@@ -68,7 +68,6 @@ NegSnellFrame.prototype.move = function(e, combo){
 NegSnellFrame.prototype.zoom = function(e, combo){
   switch(combo){
     case "r":
-      console.log("r");
       this.d.tm.setDisplayBox(this.initialDisplayBox);
     break;
     default:
