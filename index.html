@@ -72,7 +72,9 @@
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="bootstrap/js/bootstrap.min.js"></script>     
+      <script src="bootstrap/js/bootstrap.min.js"></script>
+
+
       
       
   </head>
@@ -150,7 +152,7 @@
     </div>
     
         <!-- Help Dialog Box -->
-    <div id="help-popup" style="display: none"> 
+    <div id="help-popup" style="display: none; background-color=yellow"> 
         <div class="page-header page-header-mod">
             <button id="help-close" type="button" class="close">
             <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
@@ -198,7 +200,7 @@
         $(window).load(function() {
             window.currentFrame = NegSnell(new TriangleTiling(0.5,0.3));
             
-        });        
+        });
         $(".new-tiling").click(function(e){
             e.preventDefault();
             window.currentFrame = DialogBox(e.target.id);
@@ -235,7 +237,6 @@
         });
         $("#help-close").click(function(e){
             e.preventDefault();
-            console.log("fuuuuuu");
             $("#help-popup").fadeToggle();
         });
        
