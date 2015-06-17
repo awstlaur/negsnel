@@ -5,7 +5,6 @@ var config = {
   screenShift: .02,
   trajectoryEndpointRadius: 5,
   trajectoryIters: 100,
-  maxIters: 10000,
   
   
   backgroundColor:"white",

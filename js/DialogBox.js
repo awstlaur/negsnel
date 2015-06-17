@@ -5,9 +5,11 @@
 function DialogBox(id){
     switch(id){
         case "hexagon-triangle":
-            window.currentFrame =  NegSnell(new HexagonTriangleTiling()); break;
+            window.currentFrame =  NegSnell(new HexagonTriangleTiling()); 
+            break;
         case "octagon-square":
-            window.currentFrame =  NegSnell(new OctagonSquareTiling()); break;
+            window.currentFrame =  NegSnell(new OctagonSquareTiling());
+            break;
         default: 
             dialog(id);
         
@@ -15,13 +17,11 @@ function DialogBox(id){
 }
 
 function dialog(id){
-    //$('#myModal > .modal-dialog > .modal-content > .modal-body').html(id);
-    
-    var data = TilingParameterData[id];
+    var data = FormData[id];
     $("#error-messages").empty();
     
-    $('#my-modal-label').html(data.name + " Parameter");
-    $('#modal-form').html(getHTML(data));
+    $('#my-modal-label').html(data.name);
+    $('#modal-form').html(getHTML(data, id));
     
     
     /* submit/cancel behavior */
@@ -58,9 +58,15 @@ function dialog(id){
         });
         if(submit){
             var params = nameValueArray.map(function(nvPair){return nvPair.value});
-            var newTiling = new TilingParameterData[id].tiling(params);            
+
+            if (FormData[id].newTiling) {
+              var newTiling = new FormData[id].tiling(params);            
+              window.currentFrame = NegSnell(newTiling);
+            } else if (id === "set-iters") {
+              window.currentFrame.setIterations(params[0]);
+            }
+
             $('#my-modal').modal('hide');
-            window.currentFrame = NegSnell(newTiling);
         }
     });
     
@@ -68,8 +74,11 @@ function dialog(id){
     $('#my-modal').modal();
 }
 
-function getHTML(data){
+function getHTML(data, id){
  var out = "<p class=\"help-block\">" + data.message + "</p>";
+ if (id == "set-iters") {
+  out += "The current number of iterations is <b>" + window.currentFrame.trajLayer.L + "</b>.";
+ }
  data.parameters.forEach(function(p){
     out += "<div class=\"form-group\">";
     out += "<div class=\"input-group\">";

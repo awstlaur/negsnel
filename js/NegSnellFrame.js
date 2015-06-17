@@ -163,14 +163,13 @@ NegSnellFrame.prototype.mouseEvent = function(e){
 }
 
 NegSnellFrame.prototype.toggleHelpBox = function(e){
-  $("#help-popup").fadeToggle();
+  if($("#my-modal").attr("aria-hidden") === "true") {
+    $("#help-popup").fadeToggle();  
+  }
+  
 }
 
 NegSnellFrame.prototype.setIterations = function(iterations){
-  if (iterations <= config.maxIters) {
-    this.trajLayer.setIterations(iterations);
-    this.trajLayer.render();
-  } else {
-    alert("The maximum number of iterations is " + config.maxIters + ". Please don't crash your browser!");
-  }
+  this.trajLayer.setIterations(iterations);
+  this.trajLayer.render();
 }

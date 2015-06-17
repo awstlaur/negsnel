@@ -1,4 +1,23 @@
-var TilingParameterData={
+var FormData={
+    "set-iters":{
+     name: "Set Iterations",
+     message: "This sets the number of iterations computed, N. The default is " + config.trajectoryIters + "." + " We won't enforce a maximum, but even 10,000 takes a while."
+     ,     
+     parameters:[
+        {
+         name: "Iterations",
+         placeholder: "N",
+         id: "N",
+         minInclusive: 0,
+         minExclusive: 0,
+         maxInclusive: Number.POSITIVE_INFINITY,
+         maxExclusive: Number.POSITIVE_INFINITY
+        }
+     ],
+     newTiling: false,
+     tiling: undefined
+    },
+
     parallelogram:{
      name:"Parallelogram Tiling",
      message: "This window sets the tiling to the standard tiling by parallelograms with sides of length 1 and L, and an angle &#952; measured in degrees.",     
@@ -22,6 +41,7 @@ var TilingParameterData={
          maxExclusive: 180
         }
      ],
+     newTiling: true,
      tiling: ParallelogramTiling.prototype.fromParameters
     },
   
@@ -48,6 +68,7 @@ var TilingParameterData={
          maxExclusive: 180         
         }
      ],
+     newTiling: true,
      tiling: TriangleTiling.prototype.fromParameters
     },
     
@@ -74,6 +95,7 @@ var TilingParameterData={
          maxExclusive: 180         
         }
      ],
+     newTiling: true,
      tiling: TriangleTiling.prototype.fromAngles
     },
 
@@ -91,6 +113,7 @@ var TilingParameterData={
          maxExclusive: Number.POSITIVE_INFINITY          
         }
      ],
+     newTiling: true,
      tiling: BrickTiling.prototype.fromParameters
     },
 
@@ -117,6 +140,7 @@ var TilingParameterData={
          maxExclusive: Number.POSITIVE_INFINITY         
         }        
      ],
+     newTiling: true,
     tiling: TwoSquareTiling.prototype.fromParameters
     }    
-}
+};
