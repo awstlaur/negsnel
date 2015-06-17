@@ -32,6 +32,8 @@ function NegSnellFrame(p, component){
   Mousetrap.bind('shift+a', this.moveTrajPoints.bind(this));
   Mousetrap.bind('shift+s', this.moveTrajPoints.bind(this));
   Mousetrap.bind('shift+d', this.moveTrajPoints.bind(this));
+
+  Mousetrap.bind('esc', this.toggleHelpBox.bind(this));
   
   
   document.onmousedown = this.mouseEvent.bind(this);
@@ -157,5 +159,18 @@ NegSnellFrame.prototype.mouseEvent = function(e){
       }
       break;
     default:
+  }
 }
+
+NegSnellFrame.prototype.toggleHelpBox = function(e){
+  $("#help-popup").fadeToggle();
+}
+
+NegSnellFrame.prototype.setIterations = function(iterations){
+  if (iterations <= config.maxIters) {
+    this.trajLayer.setIterations(iterations);
+    this.trajLayer.render();
+  } else {
+    alert("The maximum number of iterations is " + config.maxIters + ". Please don't crash your browser!");
+  }
 }

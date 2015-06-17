@@ -1,3 +1,7 @@
+/**
+* sets window.currentFrame appropriately
+*/
+
 function DialogBox(id){
     switch(id){
         case "hexagon-triangle":

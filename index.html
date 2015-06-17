@@ -164,8 +164,7 @@
         <strong style="color: red">end point</strong> to control the trajectory.
         </p>
         <p>
-        Click on <strong>New </strong><span class="caret"></span> to select a tiling, or to
-        save the current save to a file, or to open a file.
+        Click on <strong>New </strong><span class="caret"></span> to select a tiling.
         </p>
         <p>
         Click on <strong>View </strong><span class="caret"></span> to zoom in or out, or to
@@ -194,6 +193,9 @@
         <p>
         <strong>CTRL+[click & drag]</strong> to draw a box to zoom in.
         </p>
+        <p>
+        <strong>ESC</strong> to close this help.
+        </p>
     </div>
       <script>
         var currentFrame = null;
@@ -203,7 +205,7 @@
         });
         $(".new-tiling").click(function(e){
             e.preventDefault();
-            window.currentFrame = DialogBox(e.target.id);
+            DialogBox(e.target.id);
             
         });
         $("#zoom-out").click(function(e){
@@ -233,11 +235,11 @@
         });        
         $("#help-dialog").click(function(e){
             e.preventDefault();
-            $("#help-popup").fadeToggle();
+            window.currentFrame.toggleHelpBox();
         });
         $("#help-close").click(function(e){
             e.preventDefault();
-            $("#help-popup").fadeToggle();
+            window.currentFrame.toggleHelpBox();
         });
        
 

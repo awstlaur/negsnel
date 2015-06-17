@@ -30,7 +30,7 @@ TrajectoryLayer.prototype.reset = function(){
   this.circles = [];
 }
 
-TrajectoryLayer.prototype.computeTrajectory = function(){ 
+TrajectoryLayer.prototype.computeTrajectory = function(){
   this.clearLayerObjects();
   
   this.trajectoryPath = null;
@@ -50,10 +50,16 @@ TrajectoryLayer.prototype.computeTrajectory = function(){
    } else {
      this.traj.push(pt);
    }
-  }
-  
+  } 
 }
 
+TrajectoryLayer.prototype.setIterations = function(iterations){
+  this.L = iterations;
+}
+
+/**
+* called initially and for major changes
+*/
 TrajectoryLayer.prototype.render = function(){
  this.computeTrajectory(); 
  
@@ -105,12 +111,15 @@ TrajectoryLayer.prototype.render = function(){
  this.circles.push([eCircle, this.e]);
 }
 
+/**
+* called for view changes (like zoom/pan)
+*/
 TrajectoryLayer.prototype.render2 = function(){
   var self = this;
- this.polygonPathSet.forEach(function(path){
+  this.polygonPathSet.forEach(function(path){
    path.transform("");
    path.transform(self.d.tm.transformString());
- });
+  });
  
  this.circles.forEach(function(c){
    var newLocation = self.d.tm.toScreenCoordinates(c[1]);
