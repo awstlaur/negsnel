@@ -1,12 +1,12 @@
 var Geometry = {
   
   triangleSign: function(x,y,z){
-   var a = y.getX() - x.getX();
-   var b = y.getY() - x.getY();
-   var c = z.getX() - x.getX();
-   var d = z.getY() - x.getY();
-   var out = (a*d - b*c); 
-   return Geometry.signum(out);
+    var a = y.getX() - x.getX();
+    var b = y.getY() - x.getY();
+    var c = z.getX() - x.getX();
+    var d = z.getY() - x.getY();
+    var out = (a*d - b*c); 
+    return Geometry.signum(out);
   },
   
   /**
@@ -33,7 +33,7 @@ var Geometry = {
   },
   
   signum: function(i){
-     return (i === 0) ? 0 : (i > 0) ? 1 : -1; 
+    return (i === 0) ? 0 : (i > 0) ? 1 : -1; 
   }
     
-}
+};

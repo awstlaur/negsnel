@@ -55,33 +55,33 @@ NegSnellFrame.prototype.move = function(e, combo){
   * 3 -> right
   */
  
- switch(dir){
-   case 0: this.d.tm.shiftUp(1); break;
-   case 1: this.d.tm.shiftRight(-1); break;
-   case 2: this.d.tm.shiftUp(-1); break;
-   case 3: this.d.tm.shiftRight(1); break;
-   default: throw new Error("Error: invalid direction");
- }
- this.polyLayer.render2();
- this.trajLayer.render2();
- 
-}
-
-NegSnellFrame.prototype.zoom = function(e, combo){
-  switch(combo){
-    case "r":
-      this.d.tm.setDisplayBox(this.initialDisplayBox);
-    break;
-    default:
-      this.d.tm.scale(config.zoomScaleMap[combo]);
+  switch(dir){
+  case 0: this.d.tm.shiftUp(1); break;
+  case 1: this.d.tm.shiftRight(-1); break;
+  case 2: this.d.tm.shiftUp(-1); break;
+  case 3: this.d.tm.shiftRight(1); break;
+  default: throw new Error('Error: invalid direction');
   }
   this.polyLayer.render2();
   this.trajLayer.render2();
-}
+ 
+};
+
+NegSnellFrame.prototype.zoom = function(e, combo){
+  switch(combo){
+  case 'r':
+    this.d.tm.setDisplayBox(this.initialDisplayBox);
+    break;
+  default:
+    this.d.tm.scale(config.zoomScaleMap[combo]);
+  }
+  this.polyLayer.render2();
+  this.trajLayer.render2();
+};
 
 NegSnellFrame.prototype.setZoomBox = function(){
- this.zoomBox = this.d.component.paper.rect(0,0,0,0);
-}
+  this.zoomBox = this.d.component.paper.rect(0,0,0,0);
+};
 
 NegSnellFrame.prototype.moveTrajPoints = function(e, combo){
   var combos = combo.split('+');
@@ -95,81 +95,81 @@ NegSnellFrame.prototype.moveTrajPoints = function(e, combo){
   * 3 -> right
   */
  
- switch(dir){
-   case 0: this.trajLayer.shiftEndPointUp(config.nudgeAmt,alsoStartPoint); break;
-   case 1: this.trajLayer.shiftEndPointRight(-config.nudgeAmt,alsoStartPoint); break;
-   case 2: this.trajLayer.shiftEndPointUp(-config.nudgeAmt,alsoStartPoint); break;
-   case 3: this.trajLayer.shiftEndPointRight(config.nudgeAmt,alsoStartPoint); break;
-   default: throw new Error("Error: invalid direction");
- }
+  switch(dir){
+  case 0: this.trajLayer.shiftEndPointUp(config.nudgeAmt,alsoStartPoint); break;
+  case 1: this.trajLayer.shiftEndPointRight(-config.nudgeAmt,alsoStartPoint); break;
+  case 2: this.trajLayer.shiftEndPointUp(-config.nudgeAmt,alsoStartPoint); break;
+  case 3: this.trajLayer.shiftEndPointRight(config.nudgeAmt,alsoStartPoint); break;
+  default: throw new Error('Error: invalid direction');
+  }
   
- this.trajLayer.render();
-}
+  this.trajLayer.render();
+};
 
 NegSnellFrame.prototype.mouseEvent = function(e){
   switch(e.type){
-    case "mousedown": 
-      if(e.ctrlKey){
-        this.fixX = e.clientX;
-        this.fixY = e.clientY;
-        this.zoomBox = this.d.component.paper.rect(this.fixX,this.fixY,0,0);
-        this.zoomBox.attr({stroke:config.zoomBoxStrokeColor});
+  case 'mousedown': 
+    if(e.ctrlKey){
+      this.fixX = e.clientX;
+      this.fixY = e.clientY;
+      this.zoomBox = this.d.component.paper.rect(this.fixX,this.fixY,0,0);
+      this.zoomBox.attr({stroke:config.zoomBoxStrokeColor});
         
-      }
-      if(e.shiftKey){
+    }
+    if(e.shiftKey){
        //console.log("math point",this.d.tm.toMathCoordinates(new Point(e.clientX, e.clientY))); 
-      }
-      break; 
-    case "mousemove":
-      if(this.zoomBox !== null){
-        var dragX = e.clientX;
-        var dragY = e.clientY;
-        var minX = (this.fixX > dragX) ? dragX : this.fixX;
-        var minY = (this.fixY > dragY) ? dragY : this.fixY;
-        var maxX = (this.fixX > dragX) ? this.fixX : dragX;
-        var maxY = (this.fixY > dragY) ? this.fixY : dragY; 
+    }
+    break; 
+  case 'mousemove':
+    if(this.zoomBox !== null){
+      var dragX = e.clientX;
+      var dragY = e.clientY;
+      var minX = (this.fixX > dragX) ? dragX : this.fixX;
+      var minY = (this.fixY > dragY) ? dragY : this.fixY;
+      var maxX = (this.fixX > dragX) ? this.fixX : dragX;
+      var maxY = (this.fixY > dragY) ? this.fixY : dragY; 
         
-        this.zoomBox.attr({          
-          x: minX,
-          y: minY,
-          width:maxX-minX,
-          height:maxY-minY,
-        });
-      }
-      break;
-    case "mouseup":
-      if(this.zoomBox !== null){
+      this.zoomBox.attr({          
+        x: minX,
+        y: minY,
+        width:maxX-minX,
+        height:maxY-minY,
+      });
+    }
+    break;
+  case 'mouseup':
+    if(this.zoomBox !== null){
         
-        var mathUpperLeft = this.d.tm.toMathCoordinates(
-          new Point(this.zoomBox.attr("x"), 
-                    this.zoomBox.attr("y")));
-        var mathLowerRight = this.d.tm.toMathCoordinates(
-          new Point(this.zoomBox.attr("x") + this.zoomBox.attr("width"), 
-                    this.zoomBox.attr("y") + this.zoomBox.attr("height")));
+      var mathUpperLeft = this.d.tm.toMathCoordinates(
+          new Point(this.zoomBox.attr('x'), 
+                    this.zoomBox.attr('y')));
+      var mathLowerRight = this.d.tm.toMathCoordinates(
+          new Point(this.zoomBox.attr('x') + this.zoomBox.attr('width'), 
+                    this.zoomBox.attr('y') + this.zoomBox.attr('height')));
 
-        var newDisp = new Rectangle(mathUpperLeft.getX(),
+      var newDisp = new Rectangle(mathUpperLeft.getX(),
                         mathLowerRight.getY(), 
                         mathLowerRight.getX() - mathUpperLeft.getX(),
                         mathLowerRight.getY() - mathUpperLeft.getY());
-        this.d.tm.setDisplayBox(newDisp);
-        this.trajLayer.render2();
-        this.polyLayer.render2();
-        this.zoomBox.remove();
-        this.zoomBox = null;
-      }
-      break;
-    default:
+      this.d.tm.setDisplayBox(newDisp);
+      this.trajLayer.render2();
+      this.polyLayer.render2();
+      this.zoomBox.remove();
+      this.zoomBox = null;
+    }
+    break;
+  default:
   }
-}
+};
 
 NegSnellFrame.prototype.toggleHelpBox = function(e){
-  if($("#my-modal").attr("aria-hidden") === "true") {
-    $("#help-popup").fadeToggle();  
+  if($('#my-modal').attr('aria-hidden') === 'true') {
+    $('#help-popup').fadeToggle();  
   }
   
-}
+};
 
 NegSnellFrame.prototype.setIterations = function(iterations){
   this.trajLayer.setIterations(iterations);
   this.trajLayer.render();
-}
+};

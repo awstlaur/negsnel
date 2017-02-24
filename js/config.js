@@ -7,25 +7,25 @@ var config = {
   trajectoryIters: 100,
   
   
-  backgroundColor:"white",
-  polyColor: "lightgrey",
-  polyStrokeColor: "blue",
-  orbitColor: "red",
-  startCircleColor: "green",
-  endCircleColor: "red",
-  draggingCircleColor: "yellow",
-  endTrajectoryColor: "pink",
-  zoomBoxStrokeColor: "orange",
+  backgroundColor:'white',
+  polyColor: 'lightgrey',
+  polyStrokeColor: 'blue',
+  orbitColor: 'red',
+  startCircleColor: 'green',
+  endCircleColor: 'red',
+  draggingCircleColor: 'yellow',
+  endTrajectoryColor: 'pink',
+  zoomBoxStrokeColor: 'orange',
   
   directionMap: {
-   'up': 0,
-   'left': 1,
-   'down': 2,
-   'right': 3,
-   'w': 0,
-   'a': 1,
-   's': 2,
-   'd': 3
+    'up': 0,
+    'left': 1,
+    'down': 2,
+    'right': 3,
+    'w': 0,
+    'a': 1,
+    's': 2,
+    'd': 3
   },
   
   zoomScaleMap: {
@@ -39,4 +39,4 @@ var config = {
   }
 
 
-}
+};

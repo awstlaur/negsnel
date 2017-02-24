@@ -6,33 +6,33 @@ function Rectangle(x,y,width,height){
 }
 
 Rectangle.prototype.getX = function(){
- return this.x; 
-}
+  return this.x; 
+};
 
 Rectangle.prototype.getY = function(){
- return this.y 
-}
+  return this.y; 
+};
 
 Rectangle.prototype.getWidth = function(){
- return this.width;
-}
+  return this.width;
+};
 
 Rectangle.prototype.getHeight = function(){
- return this.height; 
-}
+  return this.height; 
+};
 
 Rectangle.prototype.getCenterX = function(){
- return this.getMinX() + this.width/2; 
-}
+  return this.getMinX() + this.width/2; 
+};
 
 Rectangle.prototype.getCenterY = function(){
- return this.getMinY() + this.height/2; 
-}
+  return this.getMinY() + this.height/2; 
+};
 
 Rectangle.prototype.getMinX = function(){
   return this.x;
-}
+};
 
 Rectangle.prototype.getMinY = function(){
   return this.y - this.height;
-}
+};

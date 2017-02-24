@@ -1,7 +1,7 @@
 function NegSnell(t){
    //console.log('NegSnell');
-   var width = window.innerWidth;
-   var height = window.innerHeight;
+  var width = window.innerWidth;
+  var height = window.innerHeight;
    
    //canvas.style.height = height;
    //canvas.style.width = .8*width;
@@ -10,10 +10,10 @@ function NegSnell(t){
    //var RY = .1*height;
    //var RW = .8*width;
    //var RH = .8*height;
-   var paper = Raphael(0,0,width,height);
+  var paper = Raphael(0,0,width,height);
 
-   var c = new Component(paper);
-   c.setBackgroundColor(config.backgroundColor);
+  var c = new Component(paper);
+  c.setBackgroundColor(config.backgroundColor);
   
 //    document.addEventListener('click', function(e) {
 //     e = e || window.event;
