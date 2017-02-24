@@ -1,6 +1,10 @@
 ESLINT        = eslint
 ESLINT_CONFIG = .eslintrc.js
-SOURCE_JS     = js/*.js js/tiling/*.js
+SOURCE_JS     = docs/js/*.js docs/js/tiling/*.js
+
+.PHONY: run-server
+run-server:
+	bundle exec jekyll serve
 
 .PHONY: lint
 lint:
