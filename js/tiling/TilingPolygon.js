@@ -4,8 +4,6 @@ function TilingPolygon(){
   this.tiling = null;
 }
 
-  
-    
 TilingPolygon.prototype.getV = function(i){
   var j = i % this.numSides();
   if(j<0){

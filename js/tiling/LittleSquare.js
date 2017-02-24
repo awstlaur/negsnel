@@ -13,17 +13,7 @@ LittleSquare.prototype = Object.create(Square.prototype);
 LittleSquare.prototype.numSides = function(){
   return 4;
 };
- 
-// LittleSquare.prototype.getVertex = function(i){
-//   switch (i) {
-//                 case 0: return this.translate(this.tiling.m,0); break;
-//                 case 1: return this.translate(this.tiling.m+this.tiling.n,0); break;
-//                 case 2: return this.translate(this.tiling.m+this.tiling.n,this.tiling.n); break;
-//                 case 3: return this.translate(this.tiling.m,this.tiling.n); break;
-//                 default: throw new Error("Called getVertex() with invalid i.");
-//         }
-// }
-  
+
 LittleSquare.prototype.getOpposite = function(i){
   switch (i) {
   case 0: return new TilingEdge(new BigSquare(this.tiling, this.a,this.b-1), 4);

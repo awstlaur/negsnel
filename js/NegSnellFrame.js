@@ -116,9 +116,6 @@ NegSnellFrame.prototype.mouseEvent = function(e){
       this.zoomBox.attr({stroke:config.zoomBoxStrokeColor});
         
     }
-    if(e.shiftKey){
-       //console.log("math point",this.d.tm.toMathCoordinates(new Point(e.clientX, e.clientY))); 
-    }
     break; 
   case 'mousemove':
     if(this.zoomBox !== null){

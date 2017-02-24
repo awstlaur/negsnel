@@ -2,7 +2,6 @@ function TransformManager(initialDisplayBox, component){
   this.displayBox = initialDisplayBox;
   this.currentTransform = new Raphael.matrix(1,0,0,0,1,0); //identity
   this.c = component;
-  //this.updateTransform();
 }
 
 TransformManager.prototype.getDisplayBox = function(){
@@ -32,9 +31,6 @@ TransformManager.prototype.updateTransform = function(){
     if ((this.displayBox.getHeight() !== 0) && (this.c.getHeight() !== 0)) {
       scale = Math.min(this.c.getWidth() / this.displayBox.getWidth(),
                   this.c.getHeight() / this.displayBox.getHeight());
-          //console.log("widths", this.c.getWidth(), this.displayBox.getWidth());
-          //console.log("heights", this.c.getHeight(), this.displayBox.getHeight());
-          //console.log("alpha",scale);
     } else {
       scale = this.c.getWidth() / this.displayBox.getWidth();
     }
@@ -46,7 +42,7 @@ TransformManager.prototype.updateTransform = function(){
     }
   }
   
-  transform.scale(scale,scale);//,-this.c.getWidth()/2, -this.c.getHeight()/2);
+  transform.scale(scale,scale);
   var centerDest = (new Point(transform.x(p.getX(), p.getY()), transform.y(p.getX(), p.getY())));
   
   var centerX = -centerDest.getX() + this.c.getWidth()/2;
@@ -63,7 +59,6 @@ TransformManager.prototype.updateTransform = function(){
 };
 
 TransformManager.prototype.toScreenCoordinates = function(p){
-  //return this.currentTransform.transform(p);
   return new Point(this.currentTransform.x(p.getX(), p.getY()), this.currentTransform.y(p.getX(), p.getY()));
 };
 

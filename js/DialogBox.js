@@ -39,7 +39,6 @@ function dialog(id){
     var submit = true;        
     var nameValueArray = $(this).serializeArray();
     $('#error-messages').empty();
-        //console.log(nameValueArray);
         
     nameValueArray.forEach(function(nvObject){
       nvObject.value = parseFloat(nvObject.value);         
@@ -100,8 +99,6 @@ function userError(message, inputname){
   var formGroup = $('input[name=' + inputname +']').parent('.input-group').parent('.form-group');
   formGroup.removeClass('has-success');
   formGroup.addClass('has-feedback has-error');
-  //formGroup.children(".input-group").append("<span class=\"glyphicon glyphicon-remove form-control-feedback\"></span>");
-  //console.log(formGroup.children(".input-group"))  
   formGroup.children('.input-group').children('.glyphicon').removeClass('glyphicon-ok');
   formGroup.children('.input-group').children('.glyphicon').addClass('glyphicon-remove');
   $('#error-messages').append('<span id="' + inputname + '">' + message + '</span><br>');
@@ -113,15 +110,12 @@ function userSuccess(inputname){
   formGroup.addClass('has-feedback has-success');
   formGroup.children('.input-group').children('.glyphicon').removeClass('glyphicon-remove');
   formGroup.children('.input-group').children('.glyphicon').addClass('glyphicon-ok');
-    
-    //console.log($("#error-messages > #" + inputname));
   $('#error-messages > #' + inputname).remove();
 }
 
 function findParameterByID(parameters, id){
   for(i in parameters){
     var p = parameters[i];
-     //console.log(p.id + " ?=? " + id);
     if(p.id===id) return p;
   }
   throw new Error('findParameterByID called when no parameter had ID');

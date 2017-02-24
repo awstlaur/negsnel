@@ -66,14 +66,12 @@ AffineTransform.prototype.inverseTransform = function(pt){
 
 AffineTransform.prototype.transformPath = function(pathToCopy){
   var path = pathToCopy.copy();
-  //console.log(path.toString());
   for(var i = 0; i < path.xValues.length; i++){
     var curr = new Point(path.xValues[i], path.yValues[i]);
     var newPt = this.transform(curr);
     path.xValues[i] = newPt.getX();
     path.yValues[i] = newPt.getY();
   }
-  //console.log(path.toString());
   return path;
 };
 

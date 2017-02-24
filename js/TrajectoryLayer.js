@@ -8,7 +8,6 @@ function TrajectoryLayer(data){
   this.L = config.trajectoryIters;
   this.R = config.trajectoryEndpointRadius;
   this.orbitColor = config.orbitColor;
-//this.plotLengthChangeRectangle = null; //?? 
  
   this.trajectoryPath = null;
   this.polygonPathSet = [];
@@ -45,7 +44,7 @@ TrajectoryLayer.prototype.computeTrajectory = function(){
   while(this.traj.length <= this.L && keepGoing){
     this.polys.push(o.getPolygon());
     var pt = o.next();
-    if(pt == null){ // === null OR === undefined
+    if(pt == null){
       keepGoing = false;
     } else {
       this.traj.push(pt);
@@ -206,8 +205,3 @@ TrajectoryLayer.prototype.dragEvents = {
   
   
 };
-
-
-
-
-
