@@ -1,255 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Negative Snell's Law</title>
-    
     <!-- Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    
     <link href="custom.css" rel="stylesheet">
-    
-     
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
-      
-      <script src="js/config.js"></script>     
-      <script src="js/NegSnell.js"></script>
-      <script src="js/NegSnellFrame.js"></script>           
-      <script src="js/DialogBox.js"></script>      
-      
-      
-      <script src="js/Geometry.js"></script>
-      <script src="js/Point.js"></script>
-      <script src="js/Line.js"></script>
-      <script src="js/Orbit.js"></script>
-      <script src="js/LayerData.js"></script>
-      <script src="js/Layer.js"></script>
-      <script src="js/PolygonLayer.js"></script>
-      <script src="js/TransformManager.js"></script>
-      <script src="js/Rectangle.js"></script>
-      <script src="js/AffineTransform.js"></script>
-      <script src="js/Component.js"></script>
-      <script src="js/GeneralPath.js"></script>
-      <script src="js/Data.js"></script>
-      <script src="js/TrajectoryLayer.js"></script>
-      
-      <script src="js/tiling/TilingEdge.js"></script>
-      <script src="js/tiling/TilingPolygon.js"></script>
-      
-      <script src="js/tiling/Brick.js"></script>
-      <script src="js/tiling/BrickTiling.js"></script>
-      
-      <script src="js/tiling/HexagonTriangleTilingPolygon.js"></script>      
-      <script src="js/tiling/Hexagon.js"></script>
-      <script src="js/tiling/HexUpTriangle.js"></script>
-      <script src="js/tiling/HexDownTriangle.js"></script>
-      <script src="js/tiling/HexagonTriangleTiling.js"></script> 
-                  
-      <script src="js/tiling/Square.js"></script>
-      <script src="js/tiling/BigSquare.js"></script>
-      <script src="js/tiling/LittleSquare.js"></script>
-      <script src="js/tiling/TwoSquareTiling.js"></script>
-      
-      <script src="js/tiling/OctagonSquareTilingPolygon.js"></script>
-      <script src="js/tiling/Octagon.js"></script>
-      <script src="js/tiling/Octasquare.js"></script>
-      <script src="js/tiling/OctagonSquareTiling.js"></script>
-      
-      <script src="js/tiling/Parallelogram.js"></script>
-      <script src="js/tiling/ParallelogramTiling.js"></script>
-      
-      <script src="js/tiling/TriangleTilingPolygon.js"></script>
-      <script src="js/tiling/UpTriangle.js"></script>
-      <script src="js/tiling/DownTriangle.js"></script>
-      <script src="js/tiling/TriangleTiling.js"></script>
-      
-      <script src="js/FormData.js"></script> 
-      
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/NegSnell.js"></script>
+    <script src="js/NegSnellFrame.js"></script>
+    <script src="js/DialogBox.js"></script>
+    <script src="js/Geometry.js"></script>
+    <script src="js/Point.js"></script>
+    <script src="js/Line.js"></script>
+    <script src="js/Orbit.js"></script>
+    <script src="js/LayerData.js"></script>
+    <script src="js/Layer.js"></script>
+    <script src="js/PolygonLayer.js"></script>
+    <script src="js/TransformManager.js"></script>
+    <script src="js/Rectangle.js"></script>
+    <script src="js/AffineTransform.js"></script>
+    <script src="js/Component.js"></script>
+    <script src="js/GeneralPath.js"></script>
+    <script src="js/Data.js"></script>
+    <script src="js/TrajectoryLayer.js"></script>
+    <script src="js/tiling/TilingEdge.js"></script>
+    <script src="js/tiling/TilingPolygon.js"></script>
+    <script src="js/tiling/Brick.js"></script>
+    <script src="js/tiling/BrickTiling.js"></script>
+    <script src="js/tiling/HexagonTriangleTilingPolygon.js"></script>
+    <script src="js/tiling/Hexagon.js"></script>
+    <script src="js/tiling/HexUpTriangle.js"></script>
+    <script src="js/tiling/HexDownTriangle.js"></script>
+    <script src="js/tiling/HexagonTriangleTiling.js"></script>
+    <script src="js/tiling/Square.js"></script>
+    <script src="js/tiling/BigSquare.js"></script>
+    <script src="js/tiling/LittleSquare.js"></script>
+    <script src="js/tiling/TwoSquareTiling.js"></script>
+    <script src="js/tiling/OctagonSquareTilingPolygon.js"></script>
+    <script src="js/tiling/Octagon.js"></script>
+    <script src="js/tiling/Octasquare.js"></script>
+    <script src="js/tiling/OctagonSquareTiling.js"></script>
+    <script src="js/tiling/Parallelogram.js"></script>
+    <script src="js/tiling/ParallelogramTiling.js"></script>
+    <script src="js/tiling/TriangleTilingPolygon.js"></script>
+    <script src="js/tiling/UpTriangle.js"></script>
+    <script src="js/tiling/DownTriangle.js"></script>
+    <script src="js/tiling/TriangleTiling.js"></script>
+    <script src="js/FormData.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
 
-
-      
-      
-  </head>
-  <body>      
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <span class="navbar-brand">NegSnell</span>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">NegSnell</span>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">New <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" class="new-tiling" id="parallelogram">New Parallelogram Tiling</a></li>
+                            <li><a href="#" class="new-tiling" id="triangle">New Triangle Tiling</a></li>
+                            <li><a href="#" class="new-tiling" id="triangle-angles">New Triangle Tiling [angles]</a></li>
+                            <li><a href="#" class="new-tiling" id="brick">New Brick Tiling</a></li>
+                            <li><a href="#" class="new-tiling" id="two-square">New Two-Square Tiling</a></li>
+                            <li><a href="#" class="new-tiling" id="hexagon-triangle">New Hexagon-Triangle Tiling</a></li>
+                            <li><a href="#" class="new-tiling" id="octagon-square">New Octagon-Square Tiling</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">View <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a id="zoom-out" href="#">Zoom Out</a></li>
+                            <li><a id="zoom-in" href="#">Zoom In</a></li>
+                            <li><a id="zoom-reset" href="#">Reset View</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a id="set-iters" href="#">Set Iterations</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="help-dialog" href="#">Help</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">New <span class="caret"></span></a>
-             <ul class="dropdown-menu" role="menu">
-                <!-- <li><a id = "save-as" href="#">Save As</a></li> -->
-                <!-- <li><a id = "open-file" href="#">Open</a></li> -->
-                <li><a href="#" class = "new-tiling" id="parallelogram">New Parallelogram Tiling</a></li>
-                <li><a href="#" class = "new-tiling" id="triangle">New Triangle Tiling</a></li>
-                <li><a href="#" class = "new-tiling" id="triangle-angles">New Triangle Tiling [angles]</a></li>
-                <li><a href="#" class = "new-tiling" id="brick">New Brick Tiling</a></li>                
-                <li><a href="#" class = "new-tiling" id="two-square">New Two-Square Tiling</a></li>                
-                <li><a href="#" class = "new-tiling" id="hexagon-triangle">New Hexagon-Triangle Tiling</a></li>
-                <li><a href="#" class = "new-tiling" id="octagon-square">New Octagon-Square Tiling</a></li>
-             </ul>                        
-            </li>
-            <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">View <span class="caret"></span></a>
-             <ul class="dropdown-menu" role="menu">
-                <li><a id = "zoom-out"    href="#">Zoom Out</a></li>                
-                <li><a id = "zoom-in"     href="#">Zoom In</a></li>
-                <li><a id = "zoom-reset" href="#">Reset View</a></li>
-             </ul>                        
-            </li>
-            <!--<li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mode <span class="caret"></span></a>
-             <ul class="dropdown-menu" role="menu">
-                <li><a id = "do-nothing" href="#">Aesthetic</a></li>                
-                <li><a id = "plot-trajectory" href="#">Alter Trajectory</a></li>                
-             </ul>                        
-            </li> -->
-            <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <span class="caret"></span></a>
-             <ul class="dropdown-menu" role="menu">
-                <li><a id = "set-iters"    href="#">Set Iterations</a></li>                
-             </ul>                        
-            </li>
-            <li>
-              <a id = "help-dialog" href="#">Help</a></li>            
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
     </div>
-    
-        <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="my-modal-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                     </button>
                     <h4 class="modal-title" id="my-modal-label">Select Options</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form" id="modal-form" accept-charset="UTF-8">
-                        ...                        
+                        ...
                     </form>
                     <span id="error-messages"></span>
                 </div>
-                <div class="modal-footer" style="text-align:center">                     
+                <div class="modal-footer" style="text-align:center">
                     <button type="button" class="btn btn-primary" id="modal-form-submit">Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-form-cancel">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
-    
-        <!-- Help Dialog Box -->
-    <div id="help-popup" style="display: none; background-color=yellow"> 
+    <!-- Help Dialog Box -->
+    <div id="help-popup" style="display: none; background-color=yellow">
         <div class="page-header page-header-mod">
             <button id="help-close" type="button" class="close">
-            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-            </button>           
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
             <h4><strong>Welcome to <i>NegSnell</i></strong></h4>
-        </div> 
-        <p>
-        Drag the green <strong style="color: green">start point</strong> and the red
-        <strong style="color: red">end point</strong> to control the trajectory.
-        </p>
-        <p>
-        Click on <strong>New </strong><span class="caret"></span> to select a tiling.
-        </p>
-        <p>
-        Click on <strong>View </strong><span class="caret"></span> to zoom in or out, or to
-        reset the view to focus in on the central polygon.
-        </p>
-        <!--<p>
-        Click on <strong>Mode </strong><span class="caret"></span> to switch modes.
-        <i>Plot Trajectory</i> is default; <i>Aesthetic</i> is useful for saving images.
-        </p> -->
-        <div class="page-header page-header-mod">
-        <h4><strong>Keyboard Shortcuts</strong></h4>
         </div>
         <p>
-        <strong>ARROW KEYS</strong> to move the camera.
+            Drag the green <strong style="color: green">start point</strong> and the red
+            <strong style="color: red">end point</strong> to control the trajectory.
         </p>
         <p>
-        <strong>WASD</strong> move the <strong style="color: red">end point</strong>.
+            Click on <strong>New </strong><span class="caret"></span> to select a tiling.
         </p>
         <p>
-        <strong>SHIFT+WASD</strong> move the <strong style="color: red">end point</strong>
-        and the <strong style="color: green">start point</strong> simultaneously.
+            Click on <strong>View </strong><span class="caret"></span> to zoom in or out, or to reset the view to focus in on the central polygon.
+        </p>
+        <div class="page-header page-header-mod">
+            <h4><strong>Keyboard Shortcuts</strong></h4>
+        </div>
+        <p>
+            <strong>ARROW KEYS</strong> to move the camera.
         </p>
         <p>
-        <strong>I,O,R</strong> to zoom in, zoom out, and reset zoom, respectively.
+            <strong>WASD</strong> move the <strong style="color: red">end point</strong>.
         </p>
         <p>
-        <strong>CTRL+[click & drag]</strong> to draw a box to zoom in.
+            <strong>SHIFT+WASD</strong> move the <strong style="color: red">end point</strong> and the <strong style="color: green">start point</strong> simultaneously.
         </p>
         <p>
-        <strong>ESC</strong> to close this help.
+            <strong>I,O,R</strong> to zoom in, zoom out, and reset zoom, respectively.
+        </p>
+        <p>
+            <strong>CTRL+[click & drag]</strong> to draw a box to zoom in.
+        </p>
+        <p>
+            <strong>ESC</strong> to close this help.
         </p>
     </div>
-      <script>
-        var currentFrame = null;
-        $(window).load(function() {
-            window.currentFrame = NegSnell(new TriangleTiling(0.5,0.3));
-            
-        });
-        $(".new-tiling, #set-iters").click(function(e){
-            e.preventDefault();
-            DialogBox(e.target.id);
-            
-        });
-        $("#zoom-out").click(function(e){
-            e.preventDefault();
-            window.currentFrame.zoom(null, 'o');
-        });
-        $("#zoom-in").click(function(e){
-            e.preventDefault();
-            window.currentFrame.zoom(null, 'i');
-        });
-        $("#zoom-reset").click(function(e){
-            e.preventDefault();
-            window.currentFrame.zoom(null, 'r');
-        }); 
-        
-        $("#save-as").click(function(e){
-            e.preventDefault();            
-        });
-        $("#open-file").click(function(e){
-            e.preventDefault();            
-        });
-        $("#do-nothing").click(function(e){
-            e.preventDefault();            
-        });
-        $("#plot-trajectory").click(function(e){
-            e.preventDefault();            
-        });        
-        $("#help-dialog").click(function(e){
-            e.preventDefault();
-            window.currentFrame.toggleHelpBox();
-        });
-        $("#help-close").click(function(e){
-            e.preventDefault();
-            window.currentFrame.toggleHelpBox();
-        });
-       
+    <script>
+      var currentFrame = null;
+      $(window).load(function() {
+          window.currentFrame = NegSnell(new TriangleTiling(0.5, 0.3));
 
-      </script>      
-  </body>
+      });
+      $(".new-tiling, #set-iters").click(function(e) {
+          e.preventDefault();
+          DialogBox(e.target.id);
+
+      });
+      $("#zoom-out").click(function(e) {
+          e.preventDefault();
+          window.currentFrame.zoom(null, 'o');
+      });
+      $("#zoom-in").click(function(e) {
+          e.preventDefault();
+          window.currentFrame.zoom(null, 'i');
+      });
+      $("#zoom-reset").click(function(e) {
+          e.preventDefault();
+          window.currentFrame.zoom(null, 'r');
+      });
+
+      $("#save-as").click(function(e) {
+          e.preventDefault();
+      });
+      $("#open-file").click(function(e) {
+          e.preventDefault();
+      });
+      $("#do-nothing").click(function(e) {
+          e.preventDefault();
+      });
+      $("#plot-trajectory").click(function(e) {
+          e.preventDefault();
+      });
+      $("#help-dialog").click(function(e) {
+          e.preventDefault();
+          window.currentFrame.toggleHelpBox();
+      });
+      $("#help-close").click(function(e) {
+          e.preventDefault();
+          window.currentFrame.toggleHelpBox();
+      });
+    </script>
+</body>
+
 </html>
