@@ -1,11 +1,7 @@
 function PolygonLayer(data){
-  Layer.call(this);
   this.d = data;
   this.p = null;
 }
-
-PolygonLayer.prototype = Object.create(Layer.prototype);
-PolygonLayer.prototype.constructor = PolygonLayer;
 
 PolygonLayer.prototype.render = function(){
   this.p = this.d.component.paper.path(this.d.p.getPath().toString());
