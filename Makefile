@@ -1,15 +1,18 @@
-ESLINT        = eslint
-ESLINT_CONFIG = .eslintrc.js
-SOURCE_JS     = docs/js/*.js docs/js/tiling/*.js
+JEKYLL:=bundle exec jekyll
+NPM_RUN:=npm run
 
-.PHONY: run-server
-run-server:
-	bundle exec jekyll serve
+all: dev
 
-.PHONY: lint
+dev:
+	$(NPM_RUN) build
+	$(JEKYLL) build
+
+prod:
+	$(NPM_RUN) build-prod
+	$(JEKYLL) build
+
 lint:
-	$(ESLINT) --config $(ESLINT_CONFIG) $(SOURCE_JS)
+	$(NPM_RUN) lint
 
-.PHONY: lint-fix
-lint-fix:
-	$(ESLINT) --config $(ESLINT_CONFIG) $(SOURCE_JS) --fix
+serve:
+	$(JEKYLL) serve

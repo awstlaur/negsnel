@@ -7,54 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Negative Snell's Law</title>
-    <!-- Bootstrap -->
+
+    <!-- Bootstrap styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="custom.css" rel="stylesheet">
+
+    <!-- Raphael (lib) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+
+    <!-- Mousetrap (lib) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/NegSnell.js"></script>
-    <script src="js/NegSnellFrame.js"></script>
-    <script src="js/DialogBox.js"></script>
-    <script src="js/Geometry.js"></script>
-    <script src="js/Point.js"></script>
-    <script src="js/Line.js"></script>
-    <script src="js/Orbit.js"></script>
-    <script src="js/PolygonLayer.js"></script>
-    <script src="js/TransformManager.js"></script>
-    <script src="js/Rectangle.js"></script>
-    <script src="js/Component.js"></script>
-    <script src="js/GeneralPath.js"></script>
-    <script src="js/Data.js"></script>
-    <script src="js/TrajectoryLayer.js"></script>
-    <script src="js/tiling/TilingEdge.js"></script>
-    <script src="js/tiling/TilingPolygon.js"></script>
-    <script src="js/tiling/Brick.js"></script>
-    <script src="js/tiling/BrickTiling.js"></script>
-    <script src="js/tiling/HexagonTriangleTilingPolygon.js"></script>
-    <script src="js/tiling/Hexagon.js"></script>
-    <script src="js/tiling/HexUpTriangle.js"></script>
-    <script src="js/tiling/HexDownTriangle.js"></script>
-    <script src="js/tiling/HexagonTriangleTiling.js"></script>
-    <script src="js/tiling/Square.js"></script>
-    <script src="js/tiling/BigSquare.js"></script>
-    <script src="js/tiling/LittleSquare.js"></script>
-    <script src="js/tiling/TwoSquareTiling.js"></script>
-    <script src="js/tiling/OctagonSquareTilingPolygon.js"></script>
-    <script src="js/tiling/Octagon.js"></script>
-    <script src="js/tiling/Octasquare.js"></script>
-    <script src="js/tiling/OctagonSquareTiling.js"></script>
-    <script src="js/tiling/Parallelogram.js"></script>
-    <script src="js/tiling/ParallelogramTiling.js"></script>
-    <script src="js/tiling/TriangleTilingPolygon.js"></script>
-    <script src="js/tiling/UpTriangle.js"></script>
-    <script src="js/tiling/DownTriangle.js"></script>
-    <script src="js/tiling/TriangleTiling.js"></script>
-    <script src="js/FormData.js"></script>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Our styles -->
+    <link href="custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -166,51 +136,8 @@
             <strong>ESC</strong> to close this help.
         </p>
     </div>
-    <script>
-      var currentFrame = null;
-      $(window).load(function() {
-          window.currentFrame = NegSnell(new TriangleTiling(0.5, 0.3));
 
-      });
-      $(".new-tiling, #set-iters").click(function(e) {
-          e.preventDefault();
-          DialogBox(e.target.id);
-
-      });
-      $("#zoom-out").click(function(e) {
-          e.preventDefault();
-          window.currentFrame.zoom(null, 'o');
-      });
-      $("#zoom-in").click(function(e) {
-          e.preventDefault();
-          window.currentFrame.zoom(null, 'i');
-      });
-      $("#zoom-reset").click(function(e) {
-          e.preventDefault();
-          window.currentFrame.zoom(null, 'r');
-      });
-
-      $("#save-as").click(function(e) {
-          e.preventDefault();
-      });
-      $("#open-file").click(function(e) {
-          e.preventDefault();
-      });
-      $("#do-nothing").click(function(e) {
-          e.preventDefault();
-      });
-      $("#plot-trajectory").click(function(e) {
-          e.preventDefault();
-      });
-      $("#help-dialog").click(function(e) {
-          e.preventDefault();
-          window.currentFrame.toggleHelpBox();
-      });
-      $("#help-close").click(function(e) {
-          e.preventDefault();
-          window.currentFrame.toggleHelpBox();
-      });
-    </script>
+    <script type="text/javascript" src="app.bundle.js"></script>
 </body>
 
 </html>

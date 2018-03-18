@@ -1,5 +1,6 @@
 .sass-cache
-node_modules/
+node_modules/*
 *~*
 Gemfile.lock
-_site
+_site/*
+npm-debug.log

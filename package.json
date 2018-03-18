@@ -1,23 +1,42 @@
 {
   "name": "negsnel",
   "version": "1.0.0",
-  "description": "Javascript port of [Pat Hooper](http://wphooper.com/)'s original Java program, written c. 2012/2013 for use during Summer@[ICERM](https://icerm.brown.edu). Runs at http://awstlaur.github.io/negsnel/",
+  "description": "Negative Snell's Law Simulator",
   "main": "docs/index.html",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "build-prod": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.dev.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/awstlaur/negsnel.git"
   },
-  "author": "",
+  "keywords": [
+    "math",
+    "geometry",
+    "education",
+    "simulation",
+    "tiling",
+    "snell"
+  ],
+  "author": "Alexander St Laurent",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/awstlaur/negsnel/issues"
   },
   "homepage": "https://github.com/awstlaur/negsnel#readme",
   "devDependencies": {
-    "eslint": "^5.9.0"
-  }
+    "eslint": "^4.18.2",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {}
 }
