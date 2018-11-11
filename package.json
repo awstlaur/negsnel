@@ -1,0 +1,23 @@
+{
+  "name": "negsnel",
+  "version": "1.0.0",
+  "description": "Javascript port of [Pat Hooper](http://wphooper.com/)'s original Java program, written c. 2012/2013 for use during Summer@[ICERM](https://icerm.brown.edu). Runs at http://awstlaur.github.io/negsnel/",
+  "main": "docs/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awstlaur/negsnel.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/awstlaur/negsnel/issues"
+  },
+  "homepage": "https://github.com/awstlaur/negsnel#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0"
+  }
+}
