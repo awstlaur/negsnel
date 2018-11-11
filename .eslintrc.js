@@ -1,5 +1,5 @@
 module.exports = {
-    "extends": ["eslint:all"],
+    "extends": ["eslint:recommended"],
     "env": {
         "es6": true,
         "browser": true,
@@ -14,18 +14,6 @@ module.exports = {
         "Mousetrap": true
     },
     "rules": {
-
-        /* Deactivated Rules */
-
-        "id-length": "off", // Just for this project
-        "no-implicit-globals": "off", // TODO
-        "no-inline-comments": "off",
-        "no-ternary": "off",
-        "no-undefined": "off",
-        "no-warning-comments": "off",
-        "sort-keys": "off",
-
-        /* Overriden rules */
         "array-bracket-newline": ["error", "consistent"],
         "array-element-newline": ["off",
             {
@@ -41,10 +29,6 @@ module.exports = {
             {
                 "CallExpression": {"arguments": "first"},
                 "SwitchCase": 1
-            }],
-        "line-comment-position": ["error",
-            {
-                "position": "beside"
             }],
         "max-len": ["error",
             {
