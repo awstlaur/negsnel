@@ -5,12 +5,12 @@ import TriangleTiling from "./js/tiling/TriangleTiling";
 window.currentFrame = null;
 
 $(window).load(() => {
-    window.currentFrame = NegSnell(new TriangleTiling(0.5, 0.3)); // eslint-disable-line new-cap
+    window.currentFrame = NegSnell(new TriangleTiling(0.5, 0.3));
 });
 
 $(".new-tiling, #set-iters").click((e) => {
     e.preventDefault();
-    DialogBox(e.target.id); // eslint-disable-line new-cap
+    DialogBox(e.target.id);
 });
 
 $("#zoom-out").click((e) => {
