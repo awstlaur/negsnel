@@ -7,7 +7,7 @@ module.exports = {
         'eol-last': 2, //error
         'indent': [
             'error',
-            2
+            4
         ],
         'linebreak-style': [
             'error',
