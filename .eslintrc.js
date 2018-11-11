@@ -54,6 +54,7 @@ module.exports = {
                 "ignoreTrailingComments": false,
                 "ignoreStrings": false
             }],
+        "max-lines-per-function": ["error", 100],
         "max-params": ["error", 5],
         "max-statements": ["error", {"max": 50}],
         "multiline-ternary": ["error", "always-multiline"],

@@ -32,11 +32,11 @@
   },
   "homepage": "https://github.com/awstlaur/negsnel#readme",
   "devDependencies": {
-    "eslint": "^4.18.2",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12",
-    "webpack-merge": "^4.1.2"
+    "eslint": "^5.9.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {}
 }
