@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "lint": "eslint .",
-    "lint-fix": "eslint --fix .",
+    "lint": "eslint",
+    "lint-fix": "eslint --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-prod": "webpack --config webpack.prod.js",
     "build": "webpack --config webpack.dev.js"
@@ -32,6 +32,9 @@
   },
   "homepage": "https://github.com/awstlaur/negsnel#readme",
   "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "babel-loader": "^8.0.4",
     "eslint": "^5.9.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.25.1",
