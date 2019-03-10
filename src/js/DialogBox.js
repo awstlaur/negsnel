@@ -12,11 +12,9 @@ import OctagonSquareTiling from "./tiling/OctagonSquareTiling";
 export default function DialogBox (id) {
     switch (id) {
         case "hexagon-triangle":
-            // eslint-disable-next-line new-cap
             window.currentFrame = NegSnell(new HexagonTriangleTiling());
             break;
         case "octagon-square":
-            // eslint-disable-next-line new-cap
             window.currentFrame = NegSnell(new OctagonSquareTiling());
             break;
         default:
@@ -51,7 +49,7 @@ function dialog (id) {
         on("submit", function (e) {
             e.preventDefault();
             let submit = true;
-            const nameValueArray = $(this).serializeArray(); // eslint-disable-line no-invalid-this
+            const nameValueArray = $(this).serializeArray();
             $("#error-messages").empty();
 
             nameValueArray.forEach((nvObject) => {
@@ -76,9 +74,7 @@ function dialog (id) {
                 const params = nameValueArray.map((nvPair) => nvPair.value);
 
                 if (FormConfig[id].newTiling) {
-                // eslint-disable-next-line new-cap
                     const newTiling = new FormConfig[id].tiling(params);
-                    // eslint-disable-next-line new-cap
                     window.currentFrame = NegSnell(newTiling);
                 }
                 else if (id === "set-iters") {

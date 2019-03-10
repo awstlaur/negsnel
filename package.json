@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "lint": "eslint",
-    "lint-fix": "eslint --fix",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-prod": "webpack --config webpack.prod.js",
     "build": "webpack --config webpack.dev.js"

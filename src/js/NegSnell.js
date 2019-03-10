@@ -10,7 +10,7 @@ import config from "./config";
 export default function NegSnell (t) {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const paper = Raphael(0, 0, width, height); // eslint-disable-line new-cap
+    const paper = Raphael(0, 0, width, height);
     const c = new Component(paper);
     c.setBackgroundColor(config.backgroundColor);
 

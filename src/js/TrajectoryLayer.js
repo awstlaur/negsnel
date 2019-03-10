@@ -56,12 +56,7 @@ TrajectoryLayer.prototype.computeTrajectory = function () {
         this.polys.push(o.getPolygon());
 
         let pt = null;
-        try {
-            pt = o.next();
-        }
-        catch (e) {
-            console.error(e); // eslint-disable-line no-console
-        }
+        pt = o.next();
 
         if (pt) {
             this.traj.push(pt);
