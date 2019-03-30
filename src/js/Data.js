@@ -7,7 +7,7 @@ import TransformManager from "./TransformManager";
  * @param {*} p
  * @param {*} frame
  */
-export default function Data (component, p, frame) {
+export default function Data(component, p, frame) {
     this.component = component;
     this.tm = new TransformManager(new Rectangle(-2, 2, 4, 4), component);
     this.p = p;

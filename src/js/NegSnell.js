@@ -7,7 +7,7 @@ import config from "./config";
  * @param {*} t
  * @return {*}
  */
-export default function NegSnell (t) {
+export default function NegSnell(t) {
     const width = window.innerWidth;
     const height = window.innerHeight;
     const paper = Raphael(0, 0, width, height);

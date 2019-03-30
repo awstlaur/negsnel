@@ -6,11 +6,11 @@ import TilingEdge from "./TilingEdge";
  * Represents any polygon in any tiling
  *
  */
-export default function TilingPolygon () {
+export default function TilingPolygon() {
     this.tiling = null;
 }
 
-TilingPolygon.prototype.getV = function (i) {
+TilingPolygon.prototype.getV = function(i) {
     const j = i % this.numSides();
     if (j < 0) {
         return this.getVertex(j + this.numSides());
@@ -19,11 +19,11 @@ TilingPolygon.prototype.getV = function (i) {
     return this.getVertex(j);
 };
 
-TilingPolygon.prototype.getEdge = function (i) {
+TilingPolygon.prototype.getEdge = function(i) {
     return new TilingEdge(this, i);
 };
 
-TilingPolygon.prototype.getO = function (i) {
+TilingPolygon.prototype.getO = function(i) {
     const j = i % this.numSides();
     if (j < 0) {
         return this.getOpposite(j + this.numSides());
@@ -32,7 +32,7 @@ TilingPolygon.prototype.getO = function (i) {
     return this.getOpposite(j);
 };
 
-TilingPolygon.prototype.getPath = function () {
+TilingPolygon.prototype.getPath = function() {
     const g = new GeneralPath();
     let p = this.getVertex(0);
     g.moveTo(p.getX(), p.getY());
@@ -44,7 +44,7 @@ TilingPolygon.prototype.getPath = function () {
     return g;
 };
 
-TilingPolygon.prototype.getCenterOfMass = function () {
+TilingPolygon.prototype.getCenterOfMass = function() {
     let cx = 0.0;
     let cy = 0.0;
     const n = this.numSides();
@@ -56,7 +56,7 @@ TilingPolygon.prototype.getCenterOfMass = function () {
     return new Point(cx / n, cy / n);
 };
 
-TilingPolygon.prototype.tilingToString = function () {
+TilingPolygon.prototype.tilingToString = function() {
     return this.tiling.toString();
 };
 

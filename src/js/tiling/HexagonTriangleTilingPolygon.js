@@ -9,7 +9,7 @@ import TilingPolygon from "./TilingPolygon";
  * @param {*} a
  * @param {*} b
  */
-export default function HexagonTriangleTilingPolygon (tiling, a, b) {
+export default function HexagonTriangleTilingPolygon(tiling, a, b) {
     TilingPolygon.call(this);
     this.tiling = tiling;
     this.a = a;
@@ -30,10 +30,10 @@ export default function HexagonTriangleTilingPolygon (tiling, a, b) {
 
 HexagonTriangleTilingPolygon.prototype = Object.create(TilingPolygon.prototype);
 
-HexagonTriangleTilingPolygon.prototype.getVertex = function (i) {
+HexagonTriangleTilingPolygon.prototype.getVertex = function(i) {
     return this.v[i].add(this.xt.scale(this.a)).add(this.yt.scale(this.b));
 };
 
-HexagonTriangleTilingPolygon.prototype.compareTo = function (p) {
+HexagonTriangleTilingPolygon.prototype.compareTo = function(p) {
     return HexagonTriangleTiling.compare(this, p);
 };

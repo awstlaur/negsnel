@@ -6,7 +6,7 @@ import Geometry from "./tiling/Geometry";
  * @param {*} start
  * @param {*} end
  */
-export default function Orbit (startingPolygon, start, end) {
+export default function Orbit(startingPolygon, start, end) {
     this.s = start;
     this.dir = end.subtract(this.s).normalize();
 
@@ -27,11 +27,11 @@ export default function Orbit (startingPolygon, start, end) {
     }
 }
 
-Orbit.prototype.getPolygon = function () {
+Orbit.prototype.getPolygon = function() {
     return this.edge.getPolygon();
 };
 
-Orbit.prototype.next = function () {
+Orbit.prototype.next = function() {
     const first = this.edge.getI();
     this.edge = this.edge.nextEdge();
     const e = this.s.add(this.dir);

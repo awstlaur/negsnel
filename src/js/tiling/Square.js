@@ -8,7 +8,7 @@ import TilingPolygon from "./TilingPolygon";
  * @param {*} a
  * @param {*} b
  */
-export default function Square (tiling, a, b) {
+export default function Square(tiling, a, b) {
     TilingPolygon.call(this);
     this.tiling = tiling;
     this.a = a;
@@ -20,13 +20,13 @@ export default function Square (tiling, a, b) {
 
 Square.prototype = Object.create(TilingPolygon.prototype);
 
-Square.prototype.translate = function (x, y) {
+Square.prototype.translate = function(x, y) {
     return new Point(
-        x + (this.a * this.tiling.m) - (this.b * this.tiling.n),
-        y + (this.a * this.tiling.n) + (this.b * this.tiling.m)
+        x + this.a * this.tiling.m - this.b * this.tiling.n,
+        y + this.a * this.tiling.n + this.b * this.tiling.m
     );
 };
 
-Square.prototype.getVertex = function (i) {
+Square.prototype.getVertex = function(i) {
     return this.v[i].add(this.xt.scale(this.a)).add(this.yt.scale(this.b));
 };

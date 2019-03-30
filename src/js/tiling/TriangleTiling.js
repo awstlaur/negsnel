@@ -7,26 +7,25 @@ import UpTriangle from "./UpTriangle";
  * @param {*} x
  * @param {*} y
  */
-export default function TriangleTiling (x, y) {
+export default function TriangleTiling(x, y) {
     this.x = x;
     this.y = y;
 }
 
-TriangleTiling.prototype.getOriginPolygon = function () {
+TriangleTiling.prototype.getOriginPolygon = function() {
     return new UpTriangle(this, 0, 0);
 };
 
-TriangleTiling.prototype.fromParameters = function (params) {
+TriangleTiling.prototype.fromParameters = function(params) {
     const [L] = params;
-    const theta = params[1] * Math.PI / 180;
+    const theta = (params[1] * Math.PI) / 180;
     return new TriangleTiling(L * Math.cos(theta), L * Math.sin(theta));
 };
-TriangleTiling.prototype.fromAngles = function (params) {
-    const phi = params[0] * Math.PI / 180;
-    const theta = params[1] * Math.PI / 180;
+TriangleTiling.prototype.fromAngles = function(params) {
+    const phi = (params[0] * Math.PI) / 180;
+    const theta = (params[1] * Math.PI) / 180;
     return new TriangleTiling(
         Math.tan(phi) / (Math.tan(theta) + Math.tan(phi)),
-        Math.tan(phi) * Math.tan(theta) /
-                                (Math.tan(theta) + Math.tan(phi))
+        (Math.tan(phi) * Math.tan(theta)) / (Math.tan(theta) + Math.tan(phi))
     );
 };

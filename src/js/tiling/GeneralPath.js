@@ -3,7 +3,7 @@ import Rectangle from "./Rectangle";
 /**
  * 2D path
  */
-export default function GeneralPath () {
+export default function GeneralPath() {
     this.xValues = [];
     this.yValues = [];
     this.startX = null;
@@ -11,7 +11,7 @@ export default function GeneralPath () {
     this.closed = false;
 }
 
-GeneralPath.prototype.moveTo = function (x, y) {
+GeneralPath.prototype.moveTo = function(x, y) {
     this.xValues = [];
     this.yValues = [];
     this.xValues.push(x);
@@ -21,17 +21,16 @@ GeneralPath.prototype.moveTo = function (x, y) {
     this.startY = y;
 };
 
-GeneralPath.prototype.lineTo = function (x, y) {
+GeneralPath.prototype.lineTo = function(x, y) {
     if (closed) {
         throw new Error("Attempting to manipulate a closed path.");
-    }
-    else {
+    } else {
         this.xValues.push(x);
         this.yValues.push(y);
     }
 };
 
-GeneralPath.prototype.copy = function () {
+GeneralPath.prototype.copy = function() {
     const out = new GeneralPath();
     out.xValues = this.xValues.slice(0);
     out.yValues = this.yValues.slice(0);
@@ -41,21 +40,23 @@ GeneralPath.prototype.copy = function () {
     return out;
 };
 
-GeneralPath.prototype.closePath = function () {
+GeneralPath.prototype.closePath = function() {
     this.closed = true;
     this.xValues.push(this.startX);
     this.yValues.push(this.startY);
 };
 
-GeneralPath.prototype.toString = function () {
+GeneralPath.prototype.toString = function() {
     let out = `M${this.xValues[0].toString()},${this.yValues[0].toString()}`;
     for (let i = 1; i < this.xValues.length; i++) {
-        out = `${out}L${this.xValues[i].toString()},${this.yValues[i].toString()}`;
+        out = `${out}L${this.xValues[i].toString()},${this.yValues[
+            i
+        ].toString()}`;
     }
     return out;
 };
 
-GeneralPath.prototype.getBoundingBox = function () {
+GeneralPath.prototype.getBoundingBox = function() {
     const box = Raphael.pathBBox(this.toString());
     return new Rectangle(box.x, box.y2, box.width, box.height);
 };

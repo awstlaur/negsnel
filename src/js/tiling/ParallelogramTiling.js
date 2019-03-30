@@ -6,23 +6,23 @@ import Parallelogram from "./Parallelogram";
  * @param {*} x
  * @param {*} y
  */
-export default function ParallelogramTiling (x, y) {
+export default function ParallelogramTiling(x, y) {
     this.x = x;
     this.y = y;
 }
 
-ParallelogramTiling.prototype.getOriginPolygon = function () {
+ParallelogramTiling.prototype.getOriginPolygon = function() {
     return new Parallelogram(this, 0, 0);
 };
 
-ParallelogramTiling.prototype.toString = function () {
+ParallelogramTiling.prototype.toString = function() {
     return `ParallelogramTiling ${this.x.toString()} ${this.y.toString()}`;
 };
 
-ParallelogramTiling.prototype.fromParameters = function (params) {
+ParallelogramTiling.prototype.fromParameters = function(params) {
     const [L, theta] = params;
     return new ParallelogramTiling(
-        L * Math.cos(theta * Math.PI / 180),
-        L * Math.sin(theta * Math.PI / 180)
+        L * Math.cos((theta * Math.PI) / 180),
+        L * Math.sin((theta * Math.PI) / 180)
     );
 };

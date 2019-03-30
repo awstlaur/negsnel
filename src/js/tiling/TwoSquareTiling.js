@@ -8,28 +8,28 @@ import BrickTiling from "./BrickTiling";
  * @param {*} length1
  * @param {*} length2
  */
-export default function TwoSquareTiling (length1, length2) {
+export default function TwoSquareTiling(length1, length2) {
     if (length1 > length2) {
         this.m = length1;
         this.n = length2;
-    }
-    else if (length2 > length1) {
+    } else if (length2 > length1) {
         this.m = length2;
         this.n = length1;
-    }
-    else {
-        throw new Error("called new TwoSquareTiling(length1,length2) with length1 = length2");
+    } else {
+        throw new Error(
+            "called new TwoSquareTiling(length1,length2) with length1 = length2"
+        );
     }
 }
 
-TwoSquareTiling.prototype.toString = function () {
+TwoSquareTiling.prototype.toString = function() {
     return `TwoSquareTiling ${this.m} ${this.n}`;
 };
-TwoSquareTiling.prototype.getOriginPolygon = function () {
+TwoSquareTiling.prototype.getOriginPolygon = function() {
     return new BigSquare(this, 0, 0);
 };
 
-TwoSquareTiling.prototype.fromParameters = function (params) {
+TwoSquareTiling.prototype.fromParameters = function(params) {
     const [L1, L2] = params;
     if (L1 !== L2) {
         return new TwoSquareTiling(L1, L2);
