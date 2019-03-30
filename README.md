@@ -6,7 +6,7 @@ Runs at http://awstlaur.github.io/negsnel/
 Aided research, culminating in: https://arxiv.org/abs/1502.02053
 
 ## Development
-- `npm run build` will take all the `js` files from `src/` and put
-`app.bundle.js` in the `docs/` folder
-- `jekyll run build` will take everything in `docs/` and generate the site in
-`_site`
+- `npm install` will install the dev dependencies
+- `npm run start:dev` will load up the webpack dev server, and watch for file
+changes
+- `npm lint` will run eslint on all js files
