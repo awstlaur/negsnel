@@ -6,19 +6,19 @@ import Brick from "./Brick";
  *
  * @param {*} t The offset, a number in [0, 1]
  */
-export default function BrickTiling (t) {
+export default function BrickTiling(t) {
     this.t = t;
 }
 
-BrickTiling.prototype.getOriginPolygon = function () {
+BrickTiling.prototype.getOriginPolygon = function() {
     return new Brick(this, 0, 0);
 };
 
-BrickTiling.prototype.toString = function () {
+BrickTiling.prototype.toString = function() {
     return `BrickTiling ${this.t.toString()}`;
 };
 
-BrickTiling.prototype.fromParameters = function (params) {
+BrickTiling.prototype.fromParameters = function(params) {
     const [t] = params;
     return new BrickTiling(t);
 };

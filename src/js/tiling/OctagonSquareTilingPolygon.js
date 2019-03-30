@@ -9,7 +9,7 @@ import TilingPolygon from "./TilingPolygon";
  * @param {*} a
  * @param {*} b
  */
-export default function OctagonSquareTilingPolygon (tiling, a, b) {
+export default function OctagonSquareTilingPolygon(tiling, a, b) {
     TilingPolygon.call(this);
     this.tiling = tiling;
     this.a = a;
@@ -30,10 +30,10 @@ export default function OctagonSquareTilingPolygon (tiling, a, b) {
 
 OctagonSquareTilingPolygon.prototype = Object.create(TilingPolygon.prototype);
 
-OctagonSquareTilingPolygon.prototype.getVertex = function (i) {
+OctagonSquareTilingPolygon.prototype.getVertex = function(i) {
     return this.v[i].add(this.xt.scale(this.a)).add(this.yt.scale(this.b));
 };
 
-OctagonSquareTilingPolygon.prototype.compareTo = function (p) {
+OctagonSquareTilingPolygon.prototype.compareTo = function(p) {
     return OctagonSquareTiling.compare(this, p);
 };

@@ -10,7 +10,7 @@ import config from "./config";
  * @param {*} p
  * @param {*} component
  */
-export default function NegSnellFrame (p, component) {
+export default function NegSnellFrame(p, component) {
     this.d = new Data(component, p, this);
 
     this.d.tm.setDisplayBox(p.getPath().getBoundingBox());
@@ -22,7 +22,6 @@ export default function NegSnellFrame (p, component) {
     this.zoomBox = null;
 
     this.trajLayer = new TrajectoryLayer(this.d);
-
 
     this.trajLayer.render();
 
@@ -47,14 +46,12 @@ export default function NegSnellFrame (p, component) {
 
     Mousetrap.bind("esc", this.toggleHelpBox.bind(this));
 
-
     document.onmousedown = this.mouseEvent.bind(this);
     document.onmouseup = this.mouseEvent.bind(this);
     document.onmousemove = this.mouseEvent.bind(this);
 }
 
-
-NegSnellFrame.prototype.move = function (e, combo) {
+NegSnellFrame.prototype.move = function(e, combo) {
     const dir = config.directionMap[combo];
 
     /*
@@ -85,7 +82,7 @@ NegSnellFrame.prototype.move = function (e, combo) {
     this.trajLayer.render2();
 };
 
-NegSnellFrame.prototype.zoom = function (e, combo) {
+NegSnellFrame.prototype.zoom = function(e, combo) {
     switch (combo) {
         case "r":
             this.d.tm.setDisplayBox(this.initialDisplayBox);
@@ -97,16 +94,17 @@ NegSnellFrame.prototype.zoom = function (e, combo) {
     this.trajLayer.render2();
 };
 
-NegSnellFrame.prototype.setZoomBox = function () {
+NegSnellFrame.prototype.setZoomBox = function() {
     this.zoomBox = this.d.component.paper.rect(0, 0, 0, 0);
 };
 
-NegSnellFrame.prototype.moveTrajPoints = function (e, combo) {
+NegSnellFrame.prototype.moveTrajPoints = function(e, combo) {
     const combos = combo.split("+");
     const alsoStartPoint = combos.length === 2;
-    const dir = combos.length === 2 ?
-        config.directionMap[combos[1]] :
-        config.directionMap[combos[0]];
+    const dir =
+        combos.length === 2
+            ? config.directionMap[combos[1]]
+            : config.directionMap[combos[0]];
 
     /*
      * Dir:
@@ -136,14 +134,19 @@ NegSnellFrame.prototype.moveTrajPoints = function (e, combo) {
     this.trajLayer.render();
 };
 
-NegSnellFrame.prototype.mouseEvent = function (e) {
+NegSnellFrame.prototype.mouseEvent = function(e) {
     switch (e.type) {
         case "mousedown":
             if (e.ctrlKey) {
                 this.fixX = e.clientX;
                 this.fixY = e.clientY;
-                this.zoomBox = this.d.component.paper.rect(this.fixX, this.fixY, 0, 0);
-                this.zoomBox.attr({"stroke": config.zoomBoxStrokeColor});
+                this.zoomBox = this.d.component.paper.rect(
+                    this.fixX,
+                    this.fixY,
+                    0,
+                    0
+                );
+                this.zoomBox.attr({ stroke: config.zoomBoxStrokeColor });
             }
             break;
         case "mousemove":
@@ -156,23 +159,24 @@ NegSnellFrame.prototype.mouseEvent = function (e) {
                 const maxY = this.fixY > dragY ? this.fixY : dragY;
 
                 this.zoomBox.attr({
-                    "x": minX,
-                    "y": minY,
-                    "width": maxX - minX,
-                    "height": maxY - minY
+                    x: minX,
+                    y: minY,
+                    width: maxX - minX,
+                    height: maxY - minY,
                 });
             }
             break;
         case "mouseup":
             if (this.zoomBox !== null) {
-                const mathUpperLeft = this.d.tm.toMathCoordinates(new Point(
-                    this.zoomBox.attr("x"),
-                    this.zoomBox.attr("y")
-                ));
-                const mathLowerRight = this.d.tm.toMathCoordinates(new Point(
-                    this.zoomBox.attr("x") + this.zoomBox.attr("width"),
-                    this.zoomBox.attr("y") + this.zoomBox.attr("height")
-                ));
+                const mathUpperLeft = this.d.tm.toMathCoordinates(
+                    new Point(this.zoomBox.attr("x"), this.zoomBox.attr("y"))
+                );
+                const mathLowerRight = this.d.tm.toMathCoordinates(
+                    new Point(
+                        this.zoomBox.attr("x") + this.zoomBox.attr("width"),
+                        this.zoomBox.attr("y") + this.zoomBox.attr("height")
+                    )
+                );
 
                 const newDisp = new Rectangle(
                     mathUpperLeft.getX(),
@@ -191,13 +195,13 @@ NegSnellFrame.prototype.mouseEvent = function (e) {
     }
 };
 
-NegSnellFrame.prototype.toggleHelpBox = function () {
+NegSnellFrame.prototype.toggleHelpBox = function() {
     if ($("#my-modal").attr("aria-hidden") === "true") {
         $("#help-popup").fadeToggle();
     }
 };
 
-NegSnellFrame.prototype.setIterations = function (iterations) {
+NegSnellFrame.prototype.setIterations = function(iterations) {
     this.trajLayer.setIterations(iterations);
     this.trajLayer.render();
 };

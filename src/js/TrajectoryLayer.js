@@ -7,7 +7,7 @@ import config from "./config";
  *
  * @param {*} data
  */
-export default function TrajectoryLayer (data) {
+export default function TrajectoryLayer(data) {
     this.d = data;
     this.s = null;
     this.e = null;
@@ -25,22 +25,23 @@ export default function TrajectoryLayer (data) {
     this.reset();
 }
 
-TrajectoryLayer.prototype.reset = function () {
+TrajectoryLayer.prototype.reset = function() {
     this.s = this.d.p.getCenterOfMass();
     const edge = this.d.p.getEdge(0);
-    this.e = edge.start().scale(2).
-        add(edge.end()).
-        scale(1 / 3);
+    this.e = edge
+        .start()
+        .scale(2)
+        .add(edge.end())
+        .scale(1 / 3);
     this.traj = [];
     this.polys = [];
-
 
     this.trajectoryPath = null;
     this.polygonPathSet = [];
     this.circles = [];
 };
 
-TrajectoryLayer.prototype.computeTrajectory = function () {
+TrajectoryLayer.prototype.computeTrajectory = function() {
     this.clearLayerObjects();
 
     this.trajectoryPath = null;
@@ -60,37 +61,40 @@ TrajectoryLayer.prototype.computeTrajectory = function () {
 
         if (pt) {
             this.traj.push(pt);
-        }
-        else {
+        } else {
             keepGoing = false;
         }
     }
 };
 
-TrajectoryLayer.prototype.setIterations = function (iterations) {
+TrajectoryLayer.prototype.setIterations = function(iterations) {
     this.L = iterations;
 };
 
 /**
  * Called initially and for major changes
  */
-TrajectoryLayer.prototype.render = function () {
+TrajectoryLayer.prototype.render = function() {
     this.computeTrajectory();
 
-    this.polys.forEach((poly) => {
+    this.polys.forEach(poly => {
         const path = this.d.component.paper.path(poly.getPath().toString());
-        path.attr({"stroke": config.polyStrokeColor});
+        path.attr({ stroke: config.polyStrokeColor });
         path.transform(this.d.tm.transformString());
         this.polygonPathSet.push(path);
     });
     const [first] = this.traj;
-    let trajectoryPathString = `M${first.getX().toString()},${first.getY().toString()}`;
+    let trajectoryPathString = `M${first
+        .getX()
+        .toString()},${first.getY().toString()}`;
     for (let i = 1; i < this.traj.length; i++) {
         const current = this.traj[i];
-        trajectoryPathString += `L${current.getX().toString()},${current.getY().toString()}`;
+        trajectoryPathString += `L${current
+            .getX()
+            .toString()},${current.getY().toString()}`;
     }
     this.trajectoryPath = this.d.component.paper.path(trajectoryPathString);
-    this.trajectoryPath.attr({"stroke": config.orbitColor});
+    this.trajectoryPath.attr({ stroke: config.orbitColor });
     this.trajectoryPath.transform(this.d.tm.transformString());
 
     if (this.traj.length > 1) {
@@ -102,25 +106,41 @@ TrajectoryLayer.prototype.render = function () {
             this.R,
             this.R
         );
-        endCircle.attr({"fill": config.endTrajectoryColor});
-        this.circles.push([
-            endCircle, mathCoordCenter
-        ]);
+        endCircle.attr({ fill: config.endTrajectoryColor });
+        this.circles.push([endCircle, mathCoordCenter]);
     }
 
     const ss = this.d.tm.toScreenCoordinates(this.s);
     const ee = this.d.tm.toScreenCoordinates(this.e);
-    const sCircle = this.d.component.paper.ellipse(ss.getX(), ss.getY(), this.R, this.R);
-    const eCircle = this.d.component.paper.ellipse(ee.getX(), ee.getY(), this.R, this.R);
-    sCircle.attr({"fill": config.startCircleColor});
-    eCircle.attr({"fill": config.endCircleColor});
+    const sCircle = this.d.component.paper.ellipse(
+        ss.getX(),
+        ss.getY(),
+        this.R,
+        this.R
+    );
+    const eCircle = this.d.component.paper.ellipse(
+        ee.getX(),
+        ee.getY(),
+        this.R,
+        this.R
+    );
+    sCircle.attr({ fill: config.startCircleColor });
+    eCircle.attr({ fill: config.endCircleColor });
 
     /*
      * Set drag events and add pointers to stuff from this which will be needed
      * for the drag event
      */
-    sCircle.drag(this.dragEvents.move, this.dragEvents.start, this.dragEvents.end);
-    eCircle.drag(this.dragEvents.move, this.dragEvents.start, this.dragEvents.end);
+    sCircle.drag(
+        this.dragEvents.move,
+        this.dragEvents.start,
+        this.dragEvents.end
+    );
+    eCircle.drag(
+        this.dragEvents.move,
+        this.dragEvents.start,
+        this.dragEvents.end
+    );
     sCircle.layer = this;
     eCircle.layer = this;
     sCircle.pointObject = this.s;
@@ -130,28 +150,24 @@ TrajectoryLayer.prototype.render = function () {
     sCircle.canEscapePolygon = false;
     eCircle.canEscapePolygon = true;
 
-    this.circles.push([
-        sCircle, this.s
-    ]);
-    this.circles.push([
-        eCircle, this.e
-    ]);
+    this.circles.push([sCircle, this.s]);
+    this.circles.push([eCircle, this.e]);
 };
 
 /**
  * Called for view changes (like zoom/pan)
  */
-TrajectoryLayer.prototype.render2 = function () {
-    this.polygonPathSet.forEach((path) => {
+TrajectoryLayer.prototype.render2 = function() {
+    this.polygonPathSet.forEach(path => {
         path.transform("");
         path.transform(this.d.tm.transformString());
     });
 
-    this.circles.forEach((c) => {
+    this.circles.forEach(c => {
         const newLocation = this.d.tm.toScreenCoordinates(c[1]);
         c[0].attr({
-            "cx": newLocation.getX(),
-            "cy": newLocation.getY()
+            cx: newLocation.getX(),
+            cy: newLocation.getY(),
         });
     });
 
@@ -159,22 +175,28 @@ TrajectoryLayer.prototype.render2 = function () {
     this.trajectoryPath.transform(this.d.tm.transformString());
 };
 
-TrajectoryLayer.prototype.clearLayerObjects = function () {
+TrajectoryLayer.prototype.clearLayerObjects = function() {
     if (this.trajectoryPath !== null) {
         this.trajectoryPath.remove();
     }
-    this.polygonPathSet.forEach((path) => {
+    this.polygonPathSet.forEach(path => {
         path.remove();
     });
-    this.circles.forEach((c) => {
+    this.circles.forEach(c => {
         c[0].undrag();
         c[0].remove();
     });
 };
 
-TrajectoryLayer.prototype.shiftEndPointRight = function (shiftingConstant, alsoStartPoint) {
+TrajectoryLayer.prototype.shiftEndPointRight = function(
+    shiftingConstant,
+    alsoStartPoint
+) {
     if (alsoStartPoint) {
-        const possibleNewStartPoint = new Point(this.s.getX() + shiftingConstant, this.s.getY());
+        const possibleNewStartPoint = new Point(
+            this.s.getX() + shiftingConstant,
+            this.s.getY()
+        );
         if (this.pointInsideStartPolygon(possibleNewStartPoint)) {
             this.s = possibleNewStartPoint;
         }
@@ -184,9 +206,15 @@ TrajectoryLayer.prototype.shiftEndPointRight = function (shiftingConstant, alsoS
     this.e = new Point(x + shiftingConstant, y);
 };
 
-TrajectoryLayer.prototype.shiftEndPointUp = function (shiftingConstant, alsoStartPoint) {
+TrajectoryLayer.prototype.shiftEndPointUp = function(
+    shiftingConstant,
+    alsoStartPoint
+) {
     if (alsoStartPoint) {
-        const possibleNewStartPoint = new Point(this.s.getX(), this.s.getY() - shiftingConstant);
+        const possibleNewStartPoint = new Point(
+            this.s.getX(),
+            this.s.getY() - shiftingConstant
+        );
         if (this.pointInsideStartPolygon(possibleNewStartPoint)) {
             this.s = possibleNewStartPoint;
         }
@@ -196,7 +224,7 @@ TrajectoryLayer.prototype.shiftEndPointUp = function (shiftingConstant, alsoStar
     this.e = new Point(x, y - shiftingConstant);
 };
 
-TrajectoryLayer.prototype.pointInsideStartPolygon = function (pt) {
+TrajectoryLayer.prototype.pointInsideStartPolygon = function(pt) {
     for (let i = 0; i < this.d.p.numSides(); i++) {
         const edge = this.d.p.getEdge(i);
         if (Geometry.rightOf(edge, pt)) {
@@ -207,38 +235,36 @@ TrajectoryLayer.prototype.pointInsideStartPolygon = function (pt) {
 };
 
 TrajectoryLayer.prototype.dragEvents = {
-
     /* This refers to the element being dragged */
 
-    "start" () {
+    start() {
         this.preDragFill = this.attr("fill");
         this.ox = this.attr("cx");
         this.oy = this.attr("cy");
-        this.attr({"fill": config.draggingCircleColor});
+        this.attr({ fill: config.draggingCircleColor });
     },
 
-    "move" (dx, dy) {
-        const allow = this.canEscapePolygon ||
+    move(dx, dy) {
+        const allow =
+            this.canEscapePolygon ||
             this.layer.pointInsideStartPolygon(
-                this.tm.toMathCoordinates(
-                    new Point(this.ox + dx, this.oy + dy)
-                )
+                this.tm.toMathCoordinates(new Point(this.ox + dx, this.oy + dy))
             );
         if (allow) {
             this.attr({
-                "cx": this.ox + dx,
-                "cy": this.oy + dy
+                cx: this.ox + dx,
+                cy: this.oy + dy,
             });
         }
     },
 
-    "end" () {
-        this.attr({"fill": this.preDragFill});
-        const newPt = this.tm.toMathCoordinates(new Point(this.attr("cx"), this.attr("cy")));
+    end() {
+        this.attr({ fill: this.preDragFill });
+        const newPt = this.tm.toMathCoordinates(
+            new Point(this.attr("cx"), this.attr("cy"))
+        );
         this.pointObject.x = newPt.getX();
         this.pointObject.y = newPt.getY();
         this.layer.render();
-    }
-
-
+    },
 };
