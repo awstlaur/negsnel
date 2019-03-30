@@ -1,55 +1,73 @@
-import DialogBox from "./js/DialogBox";
-import NegSnell from "./js/NegSnell";
-import TriangleTiling from "./js/tiling/TriangleTiling";
+import $ from "jquery";
 
-window.currentFrame = null;
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-$(window).load(() => {
-    window.currentFrame = NegSnell(new TriangleTiling(0.5, 0.3));
-});
+import "./style.css";
 
-$(".new-tiling, #set-iters").click(e => {
-    e.preventDefault();
-    DialogBox(e.target.id);
-});
+// lazily import code for code-splitting optimization
+// https://webpack.js.org/guides/code-splitting/
+require.ensure(
+    ["./js/DialogBox", "./js/NegSnell", "./js/tiling/TriangleTiling"],
+    require => {
+        const { default: DialogBox } = require("./js/DialogBox");
+        const { default: NegSnell } = require("./js/NegSnell");
+        const {
+            default: TriangleTiling,
+        } = require("./js/tiling/TriangleTiling");
 
-$("#zoom-out").click(e => {
-    e.preventDefault();
-    window.currentFrame.zoom(null, "o");
-});
+        window.currentFrame = NegSnell(new TriangleTiling(0.5, 0.3));
 
-$("#zoom-in").click(e => {
-    e.preventDefault();
-    window.currentFrame.zoom(null, "i");
-});
+        $(".new-tiling, #set-iters").click(e => {
+            e.preventDefault();
+            DialogBox(e.target.id);
+        });
 
-$("#zoom-reset").click(e => {
-    e.preventDefault();
-    window.currentFrame.zoom(null, "r");
-});
+        $("#zoom-out").click(e => {
+            e.preventDefault();
+            window.currentFrame.zoom(null, "o");
+        });
 
-$("#save-as").click(e => {
-    e.preventDefault();
-});
+        $("#zoom-in").click(e => {
+            e.preventDefault();
+            window.currentFrame.zoom(null, "i");
+        });
 
-$("#open-file").click(e => {
-    e.preventDefault();
-});
+        $("#zoom-reset").click(e => {
+            e.preventDefault();
+            window.currentFrame.zoom(null, "r");
+        });
 
-$("#do-nothing").click(e => {
-    e.preventDefault();
-});
+        $("#save-as").click(e => {
+            e.preventDefault();
+        });
 
-$("#plot-trajectory").click(e => {
-    e.preventDefault();
-});
+        $("#open-file").click(e => {
+            e.preventDefault();
+        });
 
-$("#help-dialog").click(e => {
-    e.preventDefault();
-    window.currentFrame.toggleHelpBox();
-});
+        $("#do-nothing").click(e => {
+            e.preventDefault();
+        });
 
-$("#help-close").click(e => {
-    e.preventDefault();
-    window.currentFrame.toggleHelpBox();
-});
+        $("#plot-trajectory").click(e => {
+            e.preventDefault();
+        });
+
+        $("#help-dialog").click(e => {
+            e.preventDefault();
+            window.currentFrame.toggleHelpBox();
+        });
+
+        $("#help-close").click(e => {
+            e.preventDefault();
+            window.currentFrame.toggleHelpBox();
+        });
+    },
+    error => {
+        window.alert("Failed to load application");
+        // eslint-disable-next-line no-console
+        console.error(error);
+    },
+    "chunk"
+);
