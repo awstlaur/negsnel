@@ -41,6 +41,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
+            Raphael: "raphael",
+            Mousetrap: "mousetrap",
         }),
     ],
 };
