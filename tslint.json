@@ -1,0 +1,22 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-prettier",
+        "tslint-plugin-prettier"
+    ],
+    "jsRules": {
+        "object-literal-sort-keys": false,
+        "no-console": false
+    },
+    "rules": {
+        "object-literal-sort-keys": false,
+        "no-console": false,
+        "interface-over-type-literal": false
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["node_modules", "docs/*.bundle.js"],
+        "format": "stylish"
+    }
+}

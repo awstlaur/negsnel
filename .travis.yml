@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - lts/*
 script:
-- yarn run lint
+- yarn run eslint
+- yarn run tslint
+- yarn run prettier
 - yarn run build:prod
 - git status
