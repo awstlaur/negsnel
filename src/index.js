@@ -64,7 +64,6 @@ require.ensure(
     },
     error => {
         window.alert("Failed to load application");
-        // eslint-disable-next-line no-console
         console.error(error);
     },
     "chunk"

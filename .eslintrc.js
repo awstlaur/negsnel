@@ -26,6 +26,7 @@ module.exports = {
         "max-lines-per-function": ["error", 100],
         "max-params": ["error", 5],
         "max-statements": ["error", { max: 50 }],
+        "no-console": "off",
         "no-magic-numbers": [
             "off", // TODO: make stricter
             {
