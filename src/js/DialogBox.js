@@ -4,98 +4,6 @@ import NegSnell from "./NegSnell";
 import OctagonSquareTiling from "./tiling/OctagonSquareTiling";
 
 /**
- * Sets window.currentFrame appropriately
- *
- * @param {*} id
- */
-export default function DialogBox(id) {
-    switch (id) {
-        case "hexagon-triangle":
-            window.currentFrame = NegSnell(new HexagonTriangleTiling());
-            break;
-        case "octagon-square":
-            window.currentFrame = NegSnell(new OctagonSquareTiling());
-            break;
-        default:
-            dialog(id);
-    }
-}
-
-/**
- *
- * @param {*} id
- */
-function dialog(id) {
-    const data = FormConfig[id];
-    $("#error-messages").empty();
-
-    $("#my-modal-label").html(data.name);
-    $("#modal-form").html(getHTML(data, id));
-
-    /* Submit/cancel behavior */
-    $("#modal-form-submit").on("click", e => {
-        e.preventDefault();
-        $("#modal-form").submit();
-    });
-
-    $("#my-modal").on("hidden.bs.modal", () => {
-        $("#modal-form")
-            .find("input[type=text], textarea")
-            .val("");
-    });
-
-    $("#modal-form")
-        .unbind("submit")
-        .on("submit", function(e) {
-            e.preventDefault();
-            let submit = true;
-            const nameValueArray = $(this).serializeArray();
-            $("#error-messages").empty();
-
-            nameValueArray.forEach(nvObject => {
-                nvObject.value = parseFloat(nvObject.value);
-                if (isNaN(nvObject.value)) {
-                    userError(
-                        `${nvObject.name} must be a real number!`,
-                        nvObject.name
-                    );
-                    submit = false;
-                } else {
-                    const parameter = findParameterByID(
-                        data.parameters,
-                        nvObject.name
-                    );
-                    const noGood = outOfBounds(parameter, nvObject.value);
-                    if (noGood) {
-                        userError(
-                            `${parameter.placeholder} is out of bounds!`,
-                            nvObject.name
-                        );
-                        submit = false;
-                    } else {
-                        userSuccess(nvObject.name);
-                    }
-                }
-            });
-            if (submit) {
-                const params = nameValueArray.map(nvPair => nvPair.value);
-
-                if (FormConfig[id].newTiling) {
-                    const newTiling = new FormConfig[id].tiling(params);
-                    window.currentFrame = NegSnell(newTiling);
-                } else if (id === "set-iters") {
-                    window.currentFrame.setIterations(params[0]);
-                }
-
-                $("#my-modal").modal("hide");
-            }
-        });
-
-    /* Show time! */
-    $("#my-modal").modal();
-}
-
-/**
  *
  * @param {*} data
  * @param {*} id
@@ -200,4 +108,96 @@ function outOfBounds(parameter, value) {
     const c = value <= parameter.maxInclusive;
     const d = value < parameter.maxExclusive;
     return !(a && b && c && d);
+}
+
+/**
+ *
+ * @param {*} id
+ */
+function dialog(id) {
+    const data = FormConfig[id];
+    $("#error-messages").empty();
+
+    $("#my-modal-label").html(data.name);
+    $("#modal-form").html(getHTML(data, id));
+
+    /* Submit/cancel behavior */
+    $("#modal-form-submit").on("click", e => {
+        e.preventDefault();
+        $("#modal-form").submit();
+    });
+
+    $("#my-modal").on("hidden.bs.modal", () => {
+        $("#modal-form")
+            .find("input[type=text], textarea")
+            .val("");
+    });
+
+    $("#modal-form")
+        .unbind("submit")
+        .on("submit", function(e) {
+            e.preventDefault();
+            let submit = true;
+            const nameValueArray = $(this).serializeArray();
+            $("#error-messages").empty();
+
+            nameValueArray.forEach(nvObject => {
+                nvObject.value = parseFloat(nvObject.value);
+                if (isNaN(nvObject.value)) {
+                    userError(
+                        `${nvObject.name} must be a real number!`,
+                        nvObject.name
+                    );
+                    submit = false;
+                } else {
+                    const parameter = findParameterByID(
+                        data.parameters,
+                        nvObject.name
+                    );
+                    const noGood = outOfBounds(parameter, nvObject.value);
+                    if (noGood) {
+                        userError(
+                            `${parameter.placeholder} is out of bounds!`,
+                            nvObject.name
+                        );
+                        submit = false;
+                    } else {
+                        userSuccess(nvObject.name);
+                    }
+                }
+            });
+            if (submit) {
+                const params = nameValueArray.map(nvPair => nvPair.value);
+
+                if (FormConfig[id].newTiling) {
+                    const newTiling = new FormConfig[id].tiling(params);
+                    window.currentFrame = NegSnell(newTiling);
+                } else if (id === "set-iters") {
+                    window.currentFrame.setIterations(params[0]);
+                }
+
+                $("#my-modal").modal("hide");
+            }
+        });
+
+    /* Show time! */
+    $("#my-modal").modal();
+}
+
+/**
+ * Sets window.currentFrame appropriately
+ *
+ * @param {*} id
+ */
+export default function DialogBox(id) {
+    switch (id) {
+        case "hexagon-triangle":
+            window.currentFrame = NegSnell(new HexagonTriangleTiling());
+            break;
+        case "octagon-square":
+            window.currentFrame = NegSnell(new OctagonSquareTiling());
+            break;
+        default:
+            dialog(id);
+    }
 }

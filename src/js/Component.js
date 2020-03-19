@@ -1,3 +1,5 @@
+import Raphael from "../../node_modules/raphael/raphael";
+
 /**
  * This object wraps our paper/screen object, to provide a level of
  * graphics-agnosticism

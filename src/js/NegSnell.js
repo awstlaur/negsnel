@@ -1,6 +1,7 @@
 import Component from "./Component";
 import NegSnellFrame from "./NegSnellFrame";
 import config from "./config";
+import Raphael from "../../node_modules/raphael/raphael";
 
 /**
  *

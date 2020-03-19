@@ -40,7 +40,7 @@ type Config = object & {
 /**
  * App-wide configuration
  */
-const config: Config = {
+const config = {
     initialDisplayBoxScale: 5,
     nudgeAmt: 0.015,
     screenShift: 0.02,

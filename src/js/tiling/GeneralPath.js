@@ -1,4 +1,5 @@
 import Rectangle from "./Rectangle";
+import Raphael from "../../../node_modules/raphael/raphael";
 
 /**
  * 2D path
