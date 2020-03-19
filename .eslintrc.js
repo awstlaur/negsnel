@@ -47,6 +47,12 @@ module.exports = {
         "no-use-before-define": ["error", "nofunc"],
         "object-shorthand": ["error", "consistent-as-needed"],
         "one-var": ["error", "never"],
+        "sort-imports": [
+            "error",
+            {
+                ignoreCase: true,
+            },
+        ],
         strict: ["error", "global"],
         "valid-jsdoc": [
             "error",

@@ -1,46 +1,7 @@
-type Config = object & {
-    initialDisplayBoxScale: number;
-    nudgeAmt: number;
-    screenShift: number;
-    trajectoryEndpointRadius: number;
-    trajectoryIters: number;
-
-    backgroundColor: string;
-    polyColor: string;
-    polyStrokeColor: string;
-    orbitColor: string;
-    startCircleColor: string;
-    endCircleColor: string;
-    draggingCircleColor: string;
-    endTrajectoryColor: string;
-    zoomBoxStrokeColor: string;
-
-    directionMap: {
-        up: number;
-        left: number;
-        down: number;
-        right: number;
-        w: number;
-        a: number;
-        s: number;
-        d: number;
-    };
-
-    zoomScaleMap: {
-        i: number;
-        o: number;
-    };
-
-    moveTrajPointsMap: {
-        alt: boolean;
-        shift: boolean;
-    };
-};
-
 /**
  * App-wide configuration
  */
-const config: Config = {
+const config = {
     initialDisplayBoxScale: 5,
     nudgeAmt: 0.015,
     screenShift: 0.02,
