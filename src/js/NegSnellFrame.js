@@ -1,4 +1,5 @@
 import Data from "./Data";
+import Mousetrap from "../../node_modules/mousetrap/mousetrap";
 import Point from "./tiling/Point";
 import PolygonLayer from "./PolygonLayer";
 import Rectangle from "./tiling/Rectangle";

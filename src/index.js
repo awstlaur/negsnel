@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./style.css";
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 // lazily import code for code-splitting optimization
 // https://webpack.js.org/guides/code-splitting/
 require.ensure(
