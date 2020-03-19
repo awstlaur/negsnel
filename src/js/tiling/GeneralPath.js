@@ -1,4 +1,5 @@
 import Rectangle from "./Rectangle";
+import Raphael from "../../../node_modules/raphael/raphael.min.js";
 
 /**
  * 2D path

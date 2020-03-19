@@ -1,6 +1,7 @@
 import Point from "./tiling/Point";
 import Rectangle from "./tiling/Rectangle";
 import config from "./config";
+import Raphael from "../../node_modules/raphael/raphael.min.js";
 
 /**
  *
