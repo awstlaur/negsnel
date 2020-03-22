@@ -35,9 +35,8 @@ const FormConfig: Record<FormID, FormData> = {
     "set-iters": {
         name: "Set Iterations",
         message:
-            `This sets the number of iterations computed, N. The default is ${
-                config.trajectoryIters
-            }.` + " We won't enforce a maximum, but even 10,000 takes a while.",
+            `This sets the number of iterations computed, N. The default is ${config.trajectoryIters}.` +
+            " We won't enforce a maximum, but even 10,000 takes a while.",
         parameters: [
             {
                 name: "Iterations",

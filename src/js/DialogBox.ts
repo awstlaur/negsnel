@@ -21,7 +21,7 @@ function getHTML(data: FormData, id: string): string {
             ((window as unknown) as HasCurrentFrame).currentFrame.trajLayer.L
         }</b>.`;
     }
-    data.parameters.forEach(p => {
+    data.parameters.forEach((p) => {
         out += '<div class="form-group">';
         out += '<div class="input-group">';
         out += '<span class="input-group-addon">';
@@ -130,26 +130,24 @@ function dialog(id: FormID): void {
     $("#modal-form").html(getHTML(data, id));
 
     /* Submit/cancel behavior */
-    $("#modal-form-submit").on("click", e => {
+    $("#modal-form-submit").on("click", (e) => {
         e.preventDefault();
         $("#modal-form").submit();
     });
 
     $("#my-modal").on("hidden.bs.modal", () => {
-        $("#modal-form")
-            .find("input[type=text], textarea")
-            .val("");
+        $("#modal-form").find("input[type=text], textarea").val("");
     });
 
     $("#modal-form")
         .unbind("submit")
-        .on("submit", function(e) {
+        .on("submit", function (e) {
             e.preventDefault();
             let submit = true;
             const nameValueArray = $(this).serializeArray();
             $("#error-messages").empty();
 
-            nameValueArray.forEach(nvObject => {
+            nameValueArray.forEach((nvObject) => {
                 const parsedValue = parseFloat(nvObject.value);
                 if (isNaN(parsedValue)) {
                     userError(
@@ -175,7 +173,7 @@ function dialog(id: FormID): void {
                 }
             });
             if (submit) {
-                const params = nameValueArray.map(nvPair =>
+                const params = nameValueArray.map((nvPair) =>
                     parseFloat(nvPair.value)
                 );
 

@@ -9,7 +9,7 @@ import "./style.css";
 // https://webpack.js.org/guides/code-splitting/
 require.ensure(
     ["./js/DialogBox", "./js/NegSnell", "./js/tiling/TriangleTiling"],
-    require => {
+    (require) => {
         const { default: DialogBox } = require("./js/DialogBox");
         const { default: NegSnell } = require("./js/NegSnell");
         const {
@@ -18,53 +18,53 @@ require.ensure(
 
         window.currentFrame = NegSnell(new TriangleTiling(0.5, 0.3));
 
-        $(".new-tiling, #set-iters").click(e => {
+        $(".new-tiling, #set-iters").click((e) => {
             e.preventDefault();
             DialogBox(e.target.id);
         });
 
-        $("#zoom-out").click(e => {
+        $("#zoom-out").click((e) => {
             e.preventDefault();
             window.currentFrame.zoom(null, "o");
         });
 
-        $("#zoom-in").click(e => {
+        $("#zoom-in").click((e) => {
             e.preventDefault();
             window.currentFrame.zoom(null, "i");
         });
 
-        $("#zoom-reset").click(e => {
+        $("#zoom-reset").click((e) => {
             e.preventDefault();
             window.currentFrame.zoom(null, "r");
         });
 
-        $("#save-as").click(e => {
+        $("#save-as").click((e) => {
             e.preventDefault();
         });
 
-        $("#open-file").click(e => {
+        $("#open-file").click((e) => {
             e.preventDefault();
         });
 
-        $("#do-nothing").click(e => {
+        $("#do-nothing").click((e) => {
             e.preventDefault();
         });
 
-        $("#plot-trajectory").click(e => {
+        $("#plot-trajectory").click((e) => {
             e.preventDefault();
         });
 
-        $("#help-dialog").click(e => {
+        $("#help-dialog").click((e) => {
             e.preventDefault();
             window.currentFrame.toggleHelpBox();
         });
 
-        $("#help-close").click(e => {
+        $("#help-close").click((e) => {
             e.preventDefault();
             window.currentFrame.toggleHelpBox();
         });
     },
-    error => {
+    (error) => {
         window.alert("Failed to load application");
         console.error(error);
     },

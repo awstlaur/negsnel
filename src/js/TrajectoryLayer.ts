@@ -155,7 +155,7 @@ export default class TrajectoryLayer {
      */
     public render(): void {
         this.computeTrajectory();
-        this.polys.forEach(poly => {
+        this.polys.forEach((poly) => {
             const path = this.d.component.paper.path(poly.getPath().toString());
             path.attr({ stroke: config.polyStrokeColor });
             path.transform(this.d.tm.transformString());
@@ -237,11 +237,11 @@ export default class TrajectoryLayer {
         if (!this.trajectoryPath) {
             throw new Error("Called render2() before calling render()");
         }
-        this.polygonPathSet.forEach(path => {
+        this.polygonPathSet.forEach((path) => {
             path.transform("");
             path.transform(this.d.tm.transformString());
         });
-        this.circles.forEach(c => {
+        this.circles.forEach((c) => {
             const newLocation = this.d.tm.toScreenCoordinates(c[1]);
             c[0].attr({
                 cx: newLocation.getX(),
@@ -255,10 +255,10 @@ export default class TrajectoryLayer {
         if (this.trajectoryPath !== null) {
             this.trajectoryPath.remove();
         }
-        this.polygonPathSet.forEach(path => {
+        this.polygonPathSet.forEach((path) => {
             path.remove();
         });
-        this.circles.forEach(c => {
+        this.circles.forEach((c) => {
             c[0].undrag();
             c[0].remove();
         });
